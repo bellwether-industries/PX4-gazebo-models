@@ -38,7 +38,7 @@
 <!-- GUI camera with top-down view -->
 <gui>
   <camera name="user_camera">
-    <pose>4.5 2.25 20 0 1.57 0</pose>
+    <pose>4.5 -2.25 20 0 1.57 0</pose>
   </camera>
 </gui>
 
@@ -60,7 +60,7 @@
 <!-- Top-down camera directly above the grid -->
 <model name="top_camera">
   <static>true</static>
-  <pose>4.5 2.25 20 0 1.5708 0</pose>
+  <pose>4.5 -2.25 20 0 1.5708 0</pose>
   <link name="link">
     <sensor name="top_down_camera" type="camera">
       <pose>0 0 0 0 0 0</pose>
@@ -120,7 +120,7 @@
     <!-- Outer green ground plane (13x6) -->
     <model name="outer_ground_plane">
       <static>true</static>
-      <pose>4.5 2.25 -0.01 0 0 0</pose>
+      <pose>4.5 -2.25 -0.01 0 0 0</pose>
       <link name="link">
         <collision name="collision">
           <geometry>
@@ -156,7 +156,7 @@
     <!-- Main brown ground plane (9x4.5) with left corner at (0, 0) -->
     <model name="ground_plane">
       <static>true</static>
-      <pose>4.5 2.25 0 0 0 0</pose>
+      <pose>4.5 -2.25 0 0 0 0</pose>
       <link name="link">
         <collision name="collision">
           <geometry>
@@ -198,7 +198,7 @@
     <!-- Row 6 (index 5), Column B (index 1): 2 boxes -->
     <model name="stack_b6">
       <static>true</static>
-      <pose>0.25 2.0 0.5 0 0 0</pose>
+      <pose>0.25 -2.25 0.5 0 0 0</pose>
       <link name="stack_link">
         <collision name="collision">
           <geometry>
@@ -236,7 +236,7 @@
     <!-- Row 6 (index 5), Column C (index 2): 2 boxes -->
     <model name="stack_c6">
       <static>true</static>
-      <pose>0.75 2.0 0.5 0 0 0</pose>
+      <pose>0.75 -2.25 0.5 0 0 0</pose>
       <link name="stack_link">
         <collision name="collision">
           <geometry>
@@ -274,7 +274,7 @@
     <!-- Row 6 (index 5), Column D (index 3): 2 boxes -->
     <model name="stack_d6">
       <static>true</static>
-      <pose>1.25 2.0 0.5 0 0 0</pose>
+      <pose>1.25 -2.25 0.5 0 0 0</pose>
       <link name="stack_link">
         <collision name="collision">
           <geometry>
@@ -312,7 +312,7 @@
     <!-- Row 6 (index 5), Column E (index 4): 6 boxes -->
     <model name="stack_e6">
       <static>true</static>
-      <pose>1.75 2.0 1.5 0 0 0</pose>
+      <pose>1.75 -2.25 1.5 0 0 0</pose>
       <link name="stack_link">
         <collision name="collision">
           <geometry>
@@ -351,7 +351,7 @@
     <!-- Row 1 (index 0), Column I (index 8): 5 boxes -->
     <model name="stack_i1">
       <static>true</static>
-      <pose>4.25 0.25 1.25 0 0 0</pose>
+      <pose>4.25 -0.25 1.25 0 0 0</pose>
       <link name="stack_link">
         <collision name="collision">
           <geometry>
@@ -389,7 +389,7 @@
     <!-- Row 2 (index 1), Column I (index 8): 5 boxes -->
     <model name="stack_i2">
       <static>true</static>
-      <pose>4.25 0.75 1.25 0 0 0</pose>
+      <pose>4.25 -0.75 1.25 0 0 0</pose>
       <link name="stack_link">
         <collision name="collision">
           <geometry>
@@ -427,7 +427,7 @@
     <!-- Row 3 (index 2), Column I (index 8): 5 boxes -->
     <model name="stack_i3">
       <static>true</static>
-      <pose>4.25 1.25 1.25 0 0 0</pose>
+      <pose>4.25 -1.25 1.25 0 0 0</pose>
       <link name="stack_link">
         <collision name="collision">
           <geometry>
@@ -465,7 +465,7 @@
     <!-- Row 4 (index 3), Column I (index 8): 3 boxes -->
     <model name="stack_i4">
       <static>true</static>
-      <pose>4.25 1.75 0.75 0 0 0</pose>
+      <pose>4.25 -1.75 0.75 0 0 0</pose>
       <link name="stack_link">
         <collision name="collision">
           <geometry>
@@ -503,7 +503,7 @@
     <!-- Row 5 (index 4), Column I (index 8): 3 boxes -->
     <model name="stack_i5">
       <static>true</static>
-      <pose>4.25 2.25 0.75 0 0 0</pose>
+      <pose>4.25 -2.25 0.75 0 0 0</pose>
       <link name="stack_link">
         <collision name="collision">
           <geometry>
@@ -542,7 +542,7 @@
     <!-- Row 5 (index 4), Column N (index 13): 4 boxes -->
     <model name="stack_n5">
       <static>true</static>
-      <pose>6.75 2.25 1.0 0 0 0</pose>
+      <pose>6.75 -2.25 1.0 0 0 0</pose>
       <link name="stack_link">
         <collision name="collision">
           <geometry>
@@ -580,7 +580,7 @@
     <!-- Row 6 (index 5), Column N (index 13): 6 boxes -->
     <model name="stack_n6">
       <static>true</static>
-      <pose>6.75 2.75 1.5 0 0 0</pose>
+      <pose>6.75 -2.75 1.5 0 0 0</pose>
       <link name="stack_link">
         <collision name="collision">
           <geometry>
@@ -618,7 +618,7 @@
     <!-- Row 7 (index 6), Column N (index 13): 2 boxes -->
     <model name="stack_n7">
       <static>true</static>
-      <pose>6.75 3.25 0.5 0 0 0</pose>
+      <pose>6.75 -3.25 0.5 0 0 0</pose>
       <link name="stack_link">
         <collision name="collision">
           <geometry>
@@ -656,7 +656,7 @@
     <!-- Row 8 (index 7), Column N (index 13): 2 boxes -->
     <model name="stack_n8">
       <static>true</static>
-      <pose>6.75 3.75 0.5 0 0 0</pose>
+      <pose>6.75 -3.75 0.5 0 0 0</pose>
       <link name="stack_link">
         <collision name="collision">
           <geometry>
@@ -694,7 +694,7 @@
     <!-- Row 9 (index 8), Column N (index 13): 2 boxes -->
     <model name="stack_n9">
       <static>true</static>
-      <pose>6.75 4.25 0.5 0 0 0</pose>
+      <pose>6.75 -4.25 0.5 0 0 0</pose>
       <link name="stack_link">
         <collision name="collision">
           <geometry>
@@ -732,7 +732,7 @@
     <!-- Orange Hub Ground Plane: 2x3 block area (C8-D8-E8, C9-D9-E9) -->
     <model name="hub_ground">
       <static>true</static>
-      <pose>1.0 3.5 0.01 0 0 0</pose>
+      <pose>1.0 -3.5 0.01 0 0 0</pose>
       <link name="hub_link">
         <collision name="collision">
           <geometry>

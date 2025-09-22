@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<sdf version="1.7">
+  <world name="empty_bkk">
+
+<!-- Physics settings -->
+<physics type="ode">
+  <max_step_size>0.004</max_step_size>
+  <real_time_factor>1.0</real_time_factor>
+  <real_time_update_rate>250</real_time_update_rate>
+</physics>
+<gravity>0 0 -9.8</gravity>
+
+<!-- Magnetic field - Taiwan location (23.089813°N, 120.307312°E) -->
+<magnetic_field>2.5e-05 1.8e-05 -4.0e-05</magnetic_field>
+
+<!-- Atmosphere -->
+<atmosphere type="adiabatic"/>
+
+<!-- Spherical coordinates for GPS - Taiwan location (7QM238Q4+WW) -->
+<spherical_coordinates>
+  <surface_model>EARTH_WGS84</surface_model>
+  <world_frame_orientation>ENU</world_frame_orientation>
+  <latitude_deg>23.089813</latitude_deg>
+  <longitude_deg>120.307312</longitude_deg>
+  <elevation>0</elevation>
+</spherical_coordinates>
+
+<!-- Scene settings with no shadows -->
+<scene>
+  <ambient>1 1 1 1</ambient>
+  <background>1 1 1 1</background>
+  <shadows>false</shadows>
+</scene>
+
+<!-- GUI camera with top-down view -->
+<gui>
+  <camera name="user_camera">
+    <pose>2.25 4.5 20 0 1.57 0</pose>
+  </camera>
+</gui>
+
+<!-- Overhead directional light with no shadows -->
+<light type="directional" name="no_shadow_light">
+  <cast_shadows>false</cast_shadows>
+  <pose>0 0 10 0 0 0</pose>
+  <diffuse>1 1 1 1</diffuse>
+  <specular>0.1 0.1 0.1 1</specular>
+  <attenuation>
+    <range>1000</range>
+    <constant>1</constant>
+    <linear>0</linear>
+    <quadratic>0</quadratic>
+  </attenuation>
+  <direction>0 0 -1</direction>
+</light>
+
+<!-- Top-down camera directly above the grid -->
+<model name="top_camera">
+  <static>true</static>
+  <pose>2.25 4.5 20 0 1.5708 0</pose>
+  <link name="link">
+    <sensor name="top_down_camera" type="camera">
+      <pose>0 0 0 0 0 0</pose>
+      <camera>
+        <horizontal_fov>1.047</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+      </camera>
+      <always_on>true</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+    </sensor>
+  </link>
+</model>
+
+    <!-- Outer green ground plane (6x11) -->
+    <model name="outer_ground_plane">
+      <static>true</static>
+      <pose>2.25 4.5 -0.01 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>6 11</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>6 11</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.2 0.6 0.2 1</ambient>
+            <diffuse>0.3 0.7 0.3 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Main brown ground plane (4.5x9) with origin at bottom-left corner -->
+    <model name="ground_plane">
+      <static>true</static>
+      <pose>2.25 4.5 0 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>4.5 9</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>4.5 9</size>
+            </plane>
+          </geometry>
+          <material>
+             <ambient>0.5 0.5 0.5 1</ambient>
+             <diffuse>0.6 0.6 0.6 1</diffuse>
+             <specular>0.1 0.1 0.1 1</specular>
+        </material>
+        </visual>
+      </link>
+    </model>
+  </world>
+</sdf>

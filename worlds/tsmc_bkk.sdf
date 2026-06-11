@@ -35,7 +35,7 @@
 <!-- GUI camera with top-down view -->
 <gui>
   <camera name="user_camera">
-    <pose>2.25 4.5 20 0 1.57 0</pose>
+    <pose>2.25 5.0 20 0 1.57 0</pose>
   </camera>
 </gui>
 
@@ -57,7 +57,7 @@
 <!-- Top-down camera directly above the grid -->
 <model name="top_camera">
   <static>true</static>
-  <pose>2.25 4.5 20 0 1.5708 0</pose>
+  <pose>2.25 5.0 20 0 1.5708 0</pose>
   <link name="link">
     <sensor name="top_down_camera" type="camera">
       <pose>0 0 0 0 0 0</pose>
@@ -83,7 +83,7 @@
     <!-- Outer green ground plane (6x11) -->
     <model name="outer_ground_plane">
       <static>true</static>
-      <pose>2.25 4.5 -0.01 0 0 0</pose>
+      <pose>2.25 5.0 -0.01 0 0 0</pose>
       <link name="link">
         <collision name="collision">
           <geometry>
@@ -119,7 +119,7 @@
     <!-- Main brown ground plane (4.5x9) with origin at bottom-left corner -->
     <model name="ground_plane">
       <static>true</static>
-      <pose>2.25 4.5 0 0 0 0</pose>
+      <pose>2.25 5.0 0 0 0 0</pose>
       <link name="link">
         <collision name="collision">
           <geometry>
@@ -152,134 +152,127 @@
       </link>
     </model>
 
-    <!-- Stacks: 3 columns of 3 stacks each (col y=2.25,4.25,6.25; rows x=1.75,2.25,2.75), height 2m -->
+    <!-- Warehouse clutter (Fuel / OpenRobotics RoboMaker) on green margin around brown 4.5×9 pad (outer 6×11); static props for visual SLAM features -->
 
-    <!-- Column 1 (y=2.25): 3 stacks at x=1.75, 2.25, 2.75 -->
-    <model name="col_1_1">
+    <model name="tsmc_wh_bucket_w1">
       <static>true</static>
-      <pose>1.75 2.25 1.0 0 0 0</pose>
-      <link name="stack_link">
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>0.5 0.5 2.0</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>0.5 0.5 2.0</size>
-            </box>
-          </geometry>
-          <material>
-            <ambient>0.4 0.25 0.1 1</ambient>
-            <diffuse>0.6 0.4 0.2 1</diffuse>
-            <specular>0.1 0.1 0.1 1</specular>
-          </material>
-        </visual>
-        <inertial>
-          <mass>2.0</mass>
-          <inertia>
-            <ixx>0.111</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.111</iyy>
-            <iyz>0</iyz>
-            <izz>0.042</izz>
-          </inertia>
-        </inertial>
-      </link>
+      <include>
+        <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/aws_robomaker_warehouse_Bucket_01</uri>
+      </include>
+      <pose>-0.35 1.8 0 0 0 0.85</pose>
     </model>
-    <model name="col_1_2">
+    <model name="tsmc_wh_clutterA_w1">
       <static>true</static>
-      <pose>2.25 2.25 1.0 0 0 0</pose>
-      <link name="stack_link">
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>0.5 0.5 2.0</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>0.5 0.5 2.0</size>
-            </box>
-          </geometry>
-          <material>
-            <ambient>0.4 0.25 0.1 1</ambient>
-            <diffuse>0.6 0.4 0.2 1</diffuse>
-            <specular>0.1 0.1 0.1 1</specular>
-          </material>
-        </visual>
-        <inertial>
-          <mass>2.0</mass>
-          <inertia>
-            <ixx>0.111</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.111</iyy>
-            <iyz>0</iyz>
-            <izz>0.042</izz>
-          </inertia>
-        </inertial>
-      </link>
+      <include>
+        <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/aws_robomaker_warehouse_ClutteringA_01</uri>
+      </include>
+      <pose>-0.36 4.85 0 0 0 1.55</pose>
     </model>
-    <model name="col_1_3">
+    <model name="tsmc_wh_clutterC_w1">
       <static>true</static>
-      <pose>2.75 2.25 1.0 0 0 0</pose>
-      <link name="stack_link">
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>0.5 0.5 2.0</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>0.5 0.5 2.0</size>
-            </box>
-          </geometry>
-          <material>
-            <ambient>0.4 0.25 0.1 1</ambient>
-            <diffuse>0.6 0.4 0.2 1</diffuse>
-            <specular>0.1 0.1 0.1 1</specular>
-          </material>
-        </visual>
-        <inertial>
-          <mass>2.0</mass>
-          <inertia>
-            <ixx>0.111</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.111</iyy>
-            <iyz>0</iyz>
-            <izz>0.042</izz>
-          </inertia>
-        </inertial>
-      </link>
+      <include>
+        <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/aws_robomaker_warehouse_ClutteringC_01</uri>
+      </include>
+      <pose>-0.34 7.9 0 0 0 -0.42</pose>
+    </model>
+    <model name="tsmc_wh_trash_w1">
+      <static>true</static>
+      <include>
+        <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/aws_robomaker_warehouse_TrashCanC_01</uri>
+      </include>
+      <pose>-0.32 9.4 0 0 0 2.71</pose>
     </model>
 
-    <!-- Column 2 (y=4.25): 3 stacks at x=1.75, 2.25, 2.75 -->
-    <model name="col_2_1">
+    <model name="tsmc_wh_bucket_e1">
       <static>true</static>
-      <pose>1.75 4.25 1.0 0 0 0</pose>
+      <include>
+        <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/aws_robomaker_warehouse_Bucket_01</uri>
+      </include>
+      <pose>4.9 1.55 0 0 0 -1.08</pose>
+    </model>
+    <model name="tsmc_wh_clutterC_e1">
+      <static>true</static>
+      <include>
+        <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/aws_robomaker_warehouse_ClutteringC_01</uri>
+      </include>
+      <pose>4.87 4.15 0 0 0 1.53</pose>
+    </model>
+    <model name="tsmc_wh_clutterA_e1">
+      <static>true</static>
+      <include>
+        <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/aws_robomaker_warehouse_ClutteringA_01</uri>
+      </include>
+      <pose>4.91 6.95 0 0 0 0.08</pose>
+    </model>
+    <model name="tsmc_wh_trash_e1">
+      <static>true</static>
+      <include>
+        <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/aws_robomaker_warehouse_TrashCanC_01</uri>
+      </include>
+      <pose>4.88 8.9 0 0 0 -1.51</pose>
+    </model>
+
+    <model name="tsmc_wh_bucket_nw">
+      <static>true</static>
+      <include>
+        <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/aws_robomaker_warehouse_Bucket_01</uri>
+      </include>
+      <pose>-0.38 10.05 0 0 0 -0.35</pose>
+    </model>
+    <model name="tsmc_wh_clutterC_n1">
+      <static>true</static>
+      <include>
+        <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/aws_robomaker_warehouse_ClutteringC_01</uri>
+      </include>
+      <pose>2.25 10.05 0 0 0 3.08</pose>
+    </model>
+    <model name="tsmc_wh_clutterA_ne">
+      <static>true</static>
+      <include>
+        <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/aws_robomaker_warehouse_ClutteringA_01</uri>
+      </include>
+      <pose>4.88 10.02 0 0 0 -1.48</pose>
+    </model>
+
+    <model name="tsmc_wh_clutterC_s1">
+      <static>true</static>
+      <include>
+        <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/aws_robomaker_warehouse_ClutteringC_01</uri>
+      </include>
+      <pose>1.15 -0.18 0 0 0 1.12</pose>
+    </model>
+    <model name="tsmc_wh_bucket_s1">
+      <static>true</static>
+      <include>
+        <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/aws_robomaker_warehouse_Bucket_01</uri>
+      </include>
+      <pose>3.05 -0.2 0 0 0 2.41</pose>
+    </model>
+    <model name="tsmc_wh_trash_se">
+      <static>true</static>
+      <include>
+        <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/aws_robomaker_warehouse_TrashCanC_01</uri>
+      </include>
+      <pose>4.92 -0.15 0 0 0 0</pose>
+    </model>
+
+    <!-- Stacks: ArUco DICT_4X4_50 on −y (south) id row*4+tier−1 (marker_00..19) and +y (north) id +20 (marker_20..39); textures: model stack_aruco_textures -->
+
+    <model name="stack_r0_b1">
+      <static>true</static>
+      <pose>2.25 3.75 0.25 0 0 0</pose>
       <link name="stack_link">
         <collision name="collision">
           <geometry>
             <box>
-              <size>0.5 0.5 2.0</size>
+              <size>0.5 0.5 0.5</size>
             </box>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
             <box>
-              <size>0.5 0.5 2.0</size>
+              <size>0.5 0.5 0.5</size>
             </box>
           </geometry>
           <material>
@@ -288,34 +281,70 @@
             <specular>0.1 0.1 0.1 1</specular>
           </material>
         </visual>
+        <visual name="aruco_south">
+          <pose>0 -0.251 0 1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_00.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_north">
+          <pose>0 0.251 0 -1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_20.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
         <inertial>
-          <mass>2.0</mass>
+          <mass>0.5</mass>
           <inertia>
-            <ixx>0.111</ixx>
+            <ixx>0.00208</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.111</iyy>
+            <iyy>0.00208</iyy>
             <iyz>0</iyz>
-            <izz>0.042</izz>
+            <izz>0.00208</izz>
           </inertia>
         </inertial>
       </link>
     </model>
-    <model name="col_2_2">
+    <model name="stack_r0_b2">
       <static>true</static>
-      <pose>2.25 4.25 1.0 0 0 0</pose>
+      <pose>2.25 3.75 0.75 0 0 0</pose>
       <link name="stack_link">
         <collision name="collision">
           <geometry>
             <box>
-              <size>0.5 0.5 2.0</size>
+              <size>0.5 0.5 0.5</size>
             </box>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
             <box>
-              <size>0.5 0.5 2.0</size>
+              <size>0.5 0.5 0.5</size>
             </box>
           </geometry>
           <material>
@@ -324,34 +353,70 @@
             <specular>0.1 0.1 0.1 1</specular>
           </material>
         </visual>
+        <visual name="aruco_south">
+          <pose>0 -0.251 0 1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_01.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_north">
+          <pose>0 0.251 0 -1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_21.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
         <inertial>
-          <mass>2.0</mass>
+          <mass>0.5</mass>
           <inertia>
-            <ixx>0.111</ixx>
+            <ixx>0.00208</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.111</iyy>
+            <iyy>0.00208</iyy>
             <iyz>0</iyz>
-            <izz>0.042</izz>
+            <izz>0.00208</izz>
           </inertia>
         </inertial>
       </link>
     </model>
-    <model name="col_2_3">
+    <model name="stack_r0_b3">
       <static>true</static>
-      <pose>2.75 4.25 1.0 0 0 0</pose>
+      <pose>2.25 3.75 1.25 0 0 0</pose>
       <link name="stack_link">
         <collision name="collision">
           <geometry>
             <box>
-              <size>0.5 0.5 2.0</size>
+              <size>0.5 0.5 0.5</size>
             </box>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
             <box>
-              <size>0.5 0.5 2.0</size>
+              <size>0.5 0.5 0.5</size>
             </box>
           </geometry>
           <material>
@@ -360,36 +425,143 @@
             <specular>0.1 0.1 0.1 1</specular>
           </material>
         </visual>
+        <visual name="aruco_south">
+          <pose>0 -0.251 0 1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_02.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_north">
+          <pose>0 0.251 0 -1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_22.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
         <inertial>
-          <mass>2.0</mass>
+          <mass>0.5</mass>
           <inertia>
-            <ixx>0.111</ixx>
+            <ixx>0.00208</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.111</iyy>
+            <iyy>0.00208</iyy>
             <iyz>0</iyz>
-            <izz>0.042</izz>
+            <izz>0.00208</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+    <model name="stack_r0_b4">
+      <static>true</static>
+      <pose>2.25 3.75 1.75 0 0 0</pose>
+      <link name="stack_link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.25 0.1 1</ambient>
+            <diffuse>0.6 0.4 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <visual name="aruco_south">
+          <pose>0 -0.251 0 1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_03.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_north">
+          <pose>0 0.251 0 -1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_23.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <inertial>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>0.00208</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00208</iyy>
+            <iyz>0</iyz>
+            <izz>0.00208</izz>
           </inertia>
         </inertial>
       </link>
     </model>
 
-    <!-- Column 3 (y=6.25): 3 stacks at x=1.75, 2.25, 2.75 -->
-    <model name="col_3_1">
+    <model name="stack_r1_b1">
       <static>true</static>
-      <pose>1.75 6.25 1.0 0 0 0</pose>
+      <pose>2.25 4.25 0.25 0 0 0</pose>
       <link name="stack_link">
         <collision name="collision">
           <geometry>
             <box>
-              <size>0.5 0.5 2.0</size>
+              <size>0.5 0.5 0.5</size>
             </box>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
             <box>
-              <size>0.5 0.5 2.0</size>
+              <size>0.5 0.5 0.5</size>
             </box>
           </geometry>
           <material>
@@ -398,34 +570,70 @@
             <specular>0.1 0.1 0.1 1</specular>
           </material>
         </visual>
+        <visual name="aruco_south">
+          <pose>0 -0.251 0 1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_04.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_north">
+          <pose>0 0.251 0 -1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_24.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
         <inertial>
-          <mass>2.0</mass>
+          <mass>0.5</mass>
           <inertia>
-            <ixx>0.111</ixx>
+            <ixx>0.00208</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.111</iyy>
+            <iyy>0.00208</iyy>
             <iyz>0</iyz>
-            <izz>0.042</izz>
+            <izz>0.00208</izz>
           </inertia>
         </inertial>
       </link>
     </model>
-    <model name="col_3_2">
+    <model name="stack_r1_b2">
       <static>true</static>
-      <pose>2.25 6.25 1.0 0 0 0</pose>
+      <pose>2.25 4.25 0.75 0 0 0</pose>
       <link name="stack_link">
         <collision name="collision">
           <geometry>
             <box>
-              <size>0.5 0.5 2.0</size>
+              <size>0.5 0.5 0.5</size>
             </box>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
             <box>
-              <size>0.5 0.5 2.0</size>
+              <size>0.5 0.5 0.5</size>
             </box>
           </geometry>
           <material>
@@ -434,34 +642,70 @@
             <specular>0.1 0.1 0.1 1</specular>
           </material>
         </visual>
+        <visual name="aruco_south">
+          <pose>0 -0.251 0 1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_05.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_north">
+          <pose>0 0.251 0 -1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_25.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
         <inertial>
-          <mass>2.0</mass>
+          <mass>0.5</mass>
           <inertia>
-            <ixx>0.111</ixx>
+            <ixx>0.00208</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.111</iyy>
+            <iyy>0.00208</iyy>
             <iyz>0</iyz>
-            <izz>0.042</izz>
+            <izz>0.00208</izz>
           </inertia>
         </inertial>
       </link>
     </model>
-    <model name="col_3_3">
+    <model name="stack_r1_b3">
       <static>true</static>
-      <pose>2.75 6.25 1.0 0 0 0</pose>
+      <pose>2.25 4.25 1.25 0 0 0</pose>
       <link name="stack_link">
         <collision name="collision">
           <geometry>
             <box>
-              <size>0.5 0.5 2.0</size>
+              <size>0.5 0.5 0.5</size>
             </box>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
             <box>
-              <size>0.5 0.5 2.0</size>
+              <size>0.5 0.5 0.5</size>
             </box>
           </geometry>
           <material>
@@ -470,15 +714,990 @@
             <specular>0.1 0.1 0.1 1</specular>
           </material>
         </visual>
+        <visual name="aruco_south">
+          <pose>0 -0.251 0 1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_06.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_north">
+          <pose>0 0.251 0 -1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_26.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
         <inertial>
-          <mass>2.0</mass>
+          <mass>0.5</mass>
           <inertia>
-            <ixx>0.111</ixx>
+            <ixx>0.00208</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0.111</iyy>
+            <iyy>0.00208</iyy>
             <iyz>0</iyz>
-            <izz>0.042</izz>
+            <izz>0.00208</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+    <model name="stack_r1_b4">
+      <static>true</static>
+      <pose>2.25 4.25 1.75 0 0 0</pose>
+      <link name="stack_link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.25 0.1 1</ambient>
+            <diffuse>0.6 0.4 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <visual name="aruco_south">
+          <pose>0 -0.251 0 1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_07.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_north">
+          <pose>0 0.251 0 -1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_27.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <inertial>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>0.00208</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00208</iyy>
+            <iyz>0</iyz>
+            <izz>0.00208</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+
+    <model name="stack_r2_b1">
+      <static>true</static>
+      <pose>2.25 4.75 0.25 0 0 0</pose>
+      <link name="stack_link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.25 0.1 1</ambient>
+            <diffuse>0.6 0.4 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <visual name="aruco_south">
+          <pose>0 -0.251 0 1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_08.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_north">
+          <pose>0 0.251 0 -1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_28.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <inertial>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>0.00208</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00208</iyy>
+            <iyz>0</iyz>
+            <izz>0.00208</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+    <model name="stack_r2_b2">
+      <static>true</static>
+      <pose>2.25 4.75 0.75 0 0 0</pose>
+      <link name="stack_link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.25 0.1 1</ambient>
+            <diffuse>0.6 0.4 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <visual name="aruco_south">
+          <pose>0 -0.251 0 1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_09.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_north">
+          <pose>0 0.251 0 -1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_29.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <inertial>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>0.00208</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00208</iyy>
+            <iyz>0</iyz>
+            <izz>0.00208</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+    <model name="stack_r2_b3">
+      <static>true</static>
+      <pose>2.25 4.75 1.25 0 0 0</pose>
+      <link name="stack_link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.25 0.1 1</ambient>
+            <diffuse>0.6 0.4 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <visual name="aruco_south">
+          <pose>0 -0.251 0 1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_10.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_north">
+          <pose>0 0.251 0 -1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_30.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <inertial>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>0.00208</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00208</iyy>
+            <iyz>0</iyz>
+            <izz>0.00208</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+    <model name="stack_r2_b4">
+      <static>true</static>
+      <pose>2.25 4.75 1.75 0 0 0</pose>
+      <link name="stack_link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.25 0.1 1</ambient>
+            <diffuse>0.6 0.4 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <visual name="aruco_south">
+          <pose>0 -0.251 0 1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_11.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_north">
+          <pose>0 0.251 0 -1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_31.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <inertial>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>0.00208</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00208</iyy>
+            <iyz>0</iyz>
+            <izz>0.00208</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+
+    <model name="stack_r3_b1">
+      <static>true</static>
+      <pose>2.25 5.25 0.25 0 0 0</pose>
+      <link name="stack_link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.25 0.1 1</ambient>
+            <diffuse>0.6 0.4 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <visual name="aruco_south">
+          <pose>0 -0.251 0 1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_12.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_north">
+          <pose>0 0.251 0 -1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_32.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <inertial>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>0.00208</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00208</iyy>
+            <iyz>0</iyz>
+            <izz>0.00208</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+    <model name="stack_r3_b2">
+      <static>true</static>
+      <pose>2.25 5.25 0.75 0 0 0</pose>
+      <link name="stack_link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.25 0.1 1</ambient>
+            <diffuse>0.6 0.4 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <visual name="aruco_south">
+          <pose>0 -0.251 0 1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_13.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_north">
+          <pose>0 0.251 0 -1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_33.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <inertial>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>0.00208</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00208</iyy>
+            <iyz>0</iyz>
+            <izz>0.00208</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+    <model name="stack_r3_b3">
+      <static>true</static>
+      <pose>2.25 5.25 1.25 0 0 0</pose>
+      <link name="stack_link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.25 0.1 1</ambient>
+            <diffuse>0.6 0.4 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <visual name="aruco_south">
+          <pose>0 -0.251 0 1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_14.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_north">
+          <pose>0 0.251 0 -1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_34.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <inertial>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>0.00208</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00208</iyy>
+            <iyz>0</iyz>
+            <izz>0.00208</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+    <model name="stack_r3_b4">
+      <static>true</static>
+      <pose>2.25 5.25 1.75 0 0 0</pose>
+      <link name="stack_link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.25 0.1 1</ambient>
+            <diffuse>0.6 0.4 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <visual name="aruco_south">
+          <pose>0 -0.251 0 1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_15.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_north">
+          <pose>0 0.251 0 -1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_35.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <inertial>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>0.00208</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00208</iyy>
+            <iyz>0</iyz>
+            <izz>0.00208</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+
+    <model name="stack_r4_b1">
+      <static>true</static>
+      <pose>2.25 5.75 0.25 0 0 0</pose>
+      <link name="stack_link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.25 0.1 1</ambient>
+            <diffuse>0.6 0.4 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <visual name="aruco_south">
+          <pose>0 -0.251 0 1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_16.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_north">
+          <pose>0 0.251 0 -1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_36.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <inertial>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>0.00208</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00208</iyy>
+            <iyz>0</iyz>
+            <izz>0.00208</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+    <model name="stack_r4_b2">
+      <static>true</static>
+      <pose>2.25 5.75 0.75 0 0 0</pose>
+      <link name="stack_link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.25 0.1 1</ambient>
+            <diffuse>0.6 0.4 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <visual name="aruco_south">
+          <pose>0 -0.251 0 1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_17.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_north">
+          <pose>0 0.251 0 -1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_37.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <inertial>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>0.00208</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00208</iyy>
+            <iyz>0</iyz>
+            <izz>0.00208</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+    <model name="stack_r4_b3">
+      <static>true</static>
+      <pose>2.25 5.75 1.25 0 0 0</pose>
+      <link name="stack_link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.25 0.1 1</ambient>
+            <diffuse>0.6 0.4 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <visual name="aruco_south">
+          <pose>0 -0.251 0 1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_18.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_north">
+          <pose>0 0.251 0 -1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_38.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <inertial>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>0.00208</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00208</iyy>
+            <iyz>0</iyz>
+            <izz>0.00208</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+    <model name="stack_r4_b4">
+      <static>true</static>
+      <pose>2.25 5.75 1.75 0 0 0</pose>
+      <link name="stack_link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.25 0.1 1</ambient>
+            <diffuse>0.6 0.4 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <visual name="aruco_south">
+          <pose>0 -0.251 0 1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_19.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_north">
+          <pose>0 0.251 0 -1.5707963267948966 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>0.45 0.45</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://stack_aruco_textures/marker_39.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <inertial>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>0.00208</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00208</iyy>
+            <iyz>0</iyz>
+            <izz>0.00208</izz>
           </inertia>
         </inertial>
       </link>

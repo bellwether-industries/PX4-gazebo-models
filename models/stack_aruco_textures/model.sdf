@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version="1.9">
+  <model name="stack_aruco_textures">
+    <static>true</static>
+    <!-- Texture bundle only; decals reference model:// URIs -->
+    <link name="stub">
+      <visual name="hide">
+        <pose>0 0 -100 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.01 0.01 0.01</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>

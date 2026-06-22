@@ -32,34 +32,36 @@
         </material>
       </visual>
 
-      <!-- D455 RGB camera: 320x240 @ 15 fps, HFOV 90 deg -->
+      <!-- D455F RGB: 320x240 @ 15 fps, HFOV 87 deg (matches RealSense /camera/color/*) -->
       <sensor name="d455_color" type="camera">
         <gz_frame_id>camera_link</gz_frame_id>
         <pose>0 0 0 0 0 0</pose>
         <camera>
-          <horizontal_fov>1.5708</horizontal_fov>
+          <horizontal_fov>1.518</horizontal_fov>
           <image>
             <width>320</width>
             <height>240</height>
             <format>RGB_INT8</format>
           </image>
           <clip>
-            <near>0.1</near>
-            <far>100</far>
+            <near>0.52</near>
+            <far>6.0</far>
           </clip>
           <noise>
             <type>gaussian</type>
             <mean>0.0</mean>
             <stddev>0.007</stddev>
           </noise>
+          <optical_frame_id>camera_color_optical_frame</optical_frame_id>
+          <camera_info_topic>camera/color/camera_info</camera_info_topic>
         </camera>
         <always_on>1</always_on>
         <update_rate>15</update_rate>
         <visualize>false</visualize>
-        <topic>d455_color</topic>
+        <topic>camera/color/image_raw</topic>
       </sensor>
 
-      <!-- D455 stereo depth module: 320x240 @ 15 fps, HFOV 87 deg -->
+      <!-- D455F depth aligned to color (matches RealSense /camera/aligned_depth_to_color/*) -->
       <sensor name="d455_depth" type="depth_camera">
         <gz_frame_id>camera_link</gz_frame_id>
         <pose>0 0 0 0 0 0</pose>
@@ -71,19 +73,21 @@
             <format>R_FLOAT32</format>
           </image>
           <clip>
-            <near>0.2</near>
-            <far>20.0</far>
+            <near>0.52</near>
+            <far>6.0</far>
           </clip>
           <noise>
             <type>gaussian</type>
             <mean>0.0</mean>
-            <stddev>0.005</stddev>
+            <stddev>0.02</stddev>
           </noise>
+          <optical_frame_id>camera_color_optical_frame</optical_frame_id>
+          <camera_info_topic>camera/aligned_depth_to_color/camera_info</camera_info_topic>
         </camera>
         <always_on>1</always_on>
         <update_rate>15</update_rate>
         <visualize>false</visualize>
-        <topic>d455_depth</topic>
+        <topic>camera/aligned_depth_to_color/image_raw</topic>
       </sensor>
 
       <gravity>true</gravity>

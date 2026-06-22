@@ -230,7 +230,7 @@
       <gravity>true</gravity>
       <self_collide>false</self_collide>
       <velocity_decay/>
-      <pose>0.105 -0.170 0.063 0 0 0</pose>
+      <pose>0.13 -0.17 0.063 0 0 0</pose>
       <inertial>
         <mass>0.025</mass>
         <inertia>
@@ -295,7 +295,7 @@
       <gravity>true</gravity>
       <self_collide>false</self_collide>
       <velocity_decay/>
-      <pose>-0.153 0.148 0.016 0 0 0</pose>
+      <pose>-0.13 0.15 0.016 0 0 0</pose>
       <inertial>
         <mass>0.025</mass>
         <inertia>
@@ -360,7 +360,7 @@
       <gravity>true</gravity>
       <self_collide>false</self_collide>
       <velocity_decay/>
-      <pose>0.105 0.170 0.063 0 0 0</pose>
+      <pose>0.13 0.17 0.063 0 0 0</pose>
       <inertial>
         <mass>0.025</mass>
         <inertia>
@@ -425,7 +425,7 @@
       <gravity>true</gravity>
       <self_collide>false</self_collide>
       <velocity_decay/>
-      <pose>-0.153 -0.148 0.016 0 0 0</pose>
+      <pose>-0.13 -0.15 0.016 0 0 0</pose>
       <inertial>
         <mass>0.025</mass>
         <inertia>

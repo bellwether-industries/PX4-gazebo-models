@@ -55,11 +55,11 @@
     </model>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Depot</uri>
-      <pose>9.19009 3.09982 0 0 0 0</pose>
+      <pose>3.19 1.10 0 0 0 0</pose>
     </include>
     <model name="depot_collision">
       <static>true</static>
-      <pose>9.19009 3.09982 0 0 0 0</pose>
+      <pose>3.19 1.10 0 0 0 0</pose>
       <link name="collision_link">
         <pose>0 0 0 0 0 0</pose>
         <collision name="wall1">

@@ -6,16 +6,16 @@
       <uri>bq410</uri>
     </include>
 
-    <!-- D455 depth camera — mount matches vehicle_description bq410_gazebo.urdf -->
-    <!-- base_link → camera_link: [0.02, 0.0475, -0.08] (FLU: fwd, left, up) -->
+    <!-- D455 depth camera (forward-facing, front underside) -->
+    <!-- base_link is at model z=0.18; camera flush under bottom plate → model z=0.155 -->
     <include merge='true'>
       <uri>model://d455</uri>
-      <pose>0.02 0.0475 -0.08 0 0 0</pose>
+      <pose>0.12 0.0 0.195 0 0 0</pose>
     </include>
     <joint name="CameraJoint" type="fixed">
       <parent>base_link</parent>
       <child>camera_link</child>
-      <pose relative_to="base_link">0.02 0.0475 -0.08 0 0 0</pose>
+      <pose relative_to="base_link">0.12 0.0 0.165 0 0 0</pose>
     </joint>
 
     <!-- Optical flow sensor (downward-facing, on bottom plate) -->

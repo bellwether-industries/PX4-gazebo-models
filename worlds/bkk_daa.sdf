@@ -1,0 +1,1326 @@
+<?xml version="1.0"?>
+<sdf version="1.7">
+  <world name="bkk_daa">
+
+<!-- Physics settings -->
+<physics type="ode">
+  <max_step_size>0.004</max_step_size>
+  <real_time_factor>1.0</real_time_factor>
+  <real_time_update_rate>250</real_time_update_rate>
+</physics>
+<gravity>0 0 -9.8</gravity>
+
+<!-- Magnetic field - Taiwan location (23.089813°N, 120.307312°E) -->
+<magnetic_field>2.5e-05 1.8e-05 -4.0e-05</magnetic_field>
+
+<!-- Atmosphere -->
+<atmosphere type="adiabatic"/>
+
+<!-- Spherical coordinates for GPS - Taiwan location (7QM238Q4+WW) -->
+<spherical_coordinates>
+  <surface_model>EARTH_WGS84</surface_model>
+  <world_frame_orientation>ENU</world_frame_orientation>
+  <latitude_deg>23.089813</latitude_deg>
+  <longitude_deg>120.307312</longitude_deg>
+  <elevation>0</elevation>
+</spherical_coordinates>
+
+<!-- Scene settings with no shadows -->
+<scene>
+  <ambient>1 1 1 1</ambient>
+  <background>1 1 1 1</background>
+  <shadows>false</shadows>
+</scene>
+
+<!-- GUI camera with top-down view -->
+<gui>
+  <camera name="user_camera">
+    <pose>0.0 0.0 20 0 1.57 0</pose>
+  </camera>
+</gui>
+
+<!-- Overhead directional light with no shadows -->
+<light type="directional" name="no_shadow_light">
+  <cast_shadows>false</cast_shadows>
+  <pose>0 0 10 0 0 0</pose>
+  <diffuse>1 1 1 1</diffuse>
+  <specular>0.1 0.1 0.1 1</specular>
+  <attenuation>
+    <range>1000</range>
+    <constant>1</constant>
+    <linear>0</linear>
+    <quadratic>0</quadratic>
+  </attenuation>
+  <direction>0 0 -1</direction>
+</light>
+
+<!-- Top-down camera directly above the grid -->
+<model name="top_camera">
+  <static>true</static>
+  <pose>0.0 0.0 20 0 1.5708 0</pose>
+  <link name="link">
+    <sensor name="top_down_camera" type="camera">
+      <pose>0 0 0 0 0 0</pose>
+      <camera>
+        <horizontal_fov>1.047</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+      </camera>
+      <always_on>true</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+    </sensor>
+  </link>
+</model>
+
+    <!-- Outer green ground plane (6x11) -->
+    <model name="outer_ground_plane">
+      <static>true</static>
+      <pose>-0.25 2.0 -0.01 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>6 11</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>6 11</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://bkk_daa_floor_textures/floor_outer.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Main brown ground plane (4.5x9) with origin at bottom-left corner -->
+    <model name="ground_plane">
+      <static>true</static>
+      <pose>-0.25 2.0 0 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>4.5 9</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>4.5 9</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://bkk_daa_floor_textures/floor_inner.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Wall ArUco markers: DICT_4X4_50 ids 0-49 on interior faces (textures: wall_aruco_textures) -->
+
+    <!-- Perimeter walls around outer green boundary (6x11) -->
+    <model name="green_boundary_wall_north">
+      <static>true</static>
+      <pose>-0.25 7.5 1.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>6.0 0.1 3.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>6.0 0.1 3.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <visual name="aruco_00">
+          <pose>-2.0 -0.051 -0.75 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 -1 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_00.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_01">
+          <pose>-1.0 -0.051 -0.75 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 -1 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_01.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_02">
+          <pose>0.0 -0.051 -0.75 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 -1 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_02.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_03">
+          <pose>1.0 -0.051 -0.75 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 -1 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_03.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_04">
+          <pose>2.0 -0.051 -0.75 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 -1 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_04.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_05">
+          <pose>-2.0 -0.051 0.75 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 -1 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_05.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_06">
+          <pose>-1.0 -0.051 0.75 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 -1 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_06.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_07">
+          <pose>0.0 -0.051 0.75 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 -1 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_07.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_08">
+          <pose>1.0 -0.051 0.75 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 -1 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_08.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_09">
+          <pose>2.0 -0.051 0.75 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 -1 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_09.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="green_boundary_wall_south">
+      <static>true</static>
+      <pose>-0.25 -3.5 1.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>6.0 0.1 3.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>6.0 0.1 3.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <visual name="aruco_10">
+          <pose>-2.0 0.051 -0.75 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 1 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_10.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_11">
+          <pose>-1.0 0.051 -0.75 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 1 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_11.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_12">
+          <pose>0.0 0.051 -0.75 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 1 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_12.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_13">
+          <pose>1.0 0.051 -0.75 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 1 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_13.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_14">
+          <pose>2.0 0.051 -0.75 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 1 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_14.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_15">
+          <pose>-2.0 0.051 0.75 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 1 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_15.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_16">
+          <pose>-1.0 0.051 0.75 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 1 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_16.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_17">
+          <pose>0.0 0.051 0.75 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 1 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_17.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_18">
+          <pose>1.0 0.051 0.75 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 1 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_18.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_19">
+          <pose>2.0 0.051 0.75 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>0 1 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_19.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="green_boundary_wall_east">
+      <static>true</static>
+      <pose>2.75 2.0 1.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.1 11.0 3.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.1 11.0 3.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <visual name="aruco_20">
+          <pose>-0.051 -4.0 -0.85 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>-1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_20.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_21">
+          <pose>-0.051 -2.0 -0.85 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>-1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_21.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_22">
+          <pose>-0.051 0.0 -0.85 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>-1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_22.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_23">
+          <pose>-0.051 2.0 -0.85 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>-1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_23.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_24">
+          <pose>-0.051 4.0 -0.85 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>-1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_24.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_25">
+          <pose>-0.051 -4.0 0.0 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>-1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_25.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_26">
+          <pose>-0.051 -2.0 0.0 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>-1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_26.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_27">
+          <pose>-0.051 0.0 0.0 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>-1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_27.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_28">
+          <pose>-0.051 2.0 0.0 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>-1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_28.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_29">
+          <pose>-0.051 4.0 0.0 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>-1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_29.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_30">
+          <pose>-0.051 -4.0 0.85 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>-1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_30.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_31">
+          <pose>-0.051 -2.0 0.85 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>-1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_31.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_32">
+          <pose>-0.051 0.0 0.85 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>-1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_32.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_33">
+          <pose>-0.051 2.0 0.85 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>-1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_33.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_34">
+          <pose>-0.051 4.0 0.85 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>-1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_34.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="green_boundary_wall_west">
+      <static>true</static>
+      <pose>-3.25 2.0 1.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.1 11.0 3.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.1 11.0 3.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <visual name="aruco_35">
+          <pose>0.051 -4.0 -0.85 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_35.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_36">
+          <pose>0.051 -2.0 -0.85 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_36.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_37">
+          <pose>0.051 0.0 -0.85 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_37.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_38">
+          <pose>0.051 2.0 -0.85 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_38.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_39">
+          <pose>0.051 4.0 -0.85 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_39.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_40">
+          <pose>0.051 -4.0 0.0 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_40.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_41">
+          <pose>0.051 -2.0 0.0 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_41.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_42">
+          <pose>0.051 0.0 0.0 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_42.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_43">
+          <pose>0.051 2.0 0.0 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_43.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_44">
+          <pose>0.051 4.0 0.0 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_44.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_45">
+          <pose>0.051 -4.0 0.85 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_45.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_46">
+          <pose>0.051 -2.0 0.85 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_46.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_47">
+          <pose>0.051 0.0 0.85 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_47.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_48">
+          <pose>0.051 2.0 0.85 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_48.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <visual name="aruco_49">
+          <pose>0.051 4.0 0.85 0 0 0</pose>
+          <geometry>
+            <plane>
+              <normal>1 0 0</normal>
+              <size>0.4 0.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <pbr>
+              <metal>
+                <albedo_map>model://wall_aruco_textures/marker_49.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+
+
+
+
+
+
+    <!-- Perimeter cabinets in green border ring (generated) -->
+    <include>
+      <uri>model://depot_barrel_rack</uri>
+      <name>perimeter_cabinet_00</name>
+      <pose>-2.875 -2.2874999999999996 0.0 0 0 3.141592653589793</pose>
+    </include>
+    <include>
+      <uri>model://depot_barrel_rack</uri>
+      <name>perimeter_cabinet_01</name>
+      <pose>-2.875 -1.0624999999999998 0.0 0 0 3.141592653589793</pose>
+    </include>
+    <include>
+      <uri>model://depot_barrel_rack</uri>
+      <name>perimeter_cabinet_02</name>
+      <pose>-2.875 0.1625000000000001 0.0 0 0 3.141592653589793</pose>
+    </include>
+    <include>
+      <uri>model://depot_barrel_rack</uri>
+      <name>perimeter_cabinet_03</name>
+      <pose>-2.875 1.3875000000000006 0.0 0 0 3.141592653589793</pose>
+    </include>
+    <include>
+      <uri>model://depot_barrel_rack</uri>
+      <name>perimeter_cabinet_04</name>
+      <pose>-2.875 2.6125000000000003 0.0 0 0 3.141592653589793</pose>
+    </include>
+    <include>
+      <uri>model://depot_barrel_rack</uri>
+      <name>perimeter_cabinet_05</name>
+      <pose>-2.875 3.837500000000001 0.0 0 0 3.141592653589793</pose>
+    </include>
+    <include>
+      <uri>model://depot_barrel_rack</uri>
+      <name>perimeter_cabinet_06</name>
+      <pose>-2.875 5.0625 0.0 0 0 3.141592653589793</pose>
+    </include>
+    <include>
+      <uri>model://depot_barrel_rack</uri>
+      <name>perimeter_cabinet_07</name>
+      <pose>-2.875 6.2875 0.0 0 0 3.141592653589793</pose>
+    </include>
+    <include>
+      <uri>model://depot_barrel_rack</uri>
+      <name>perimeter_cabinet_08</name>
+      <pose>2.375 -2.2874999999999996 0.0 0 0 0.0</pose>
+    </include>
+    <include>
+      <uri>model://depot_barrel_rack</uri>
+      <name>perimeter_cabinet_09</name>
+      <pose>2.375 -1.0624999999999998 0.0 0 0 0.0</pose>
+    </include>
+    <include>
+      <uri>model://depot_barrel_rack</uri>
+      <name>perimeter_cabinet_10</name>
+      <pose>2.375 0.1625000000000001 0.0 0 0 0.0</pose>
+    </include>
+    <include>
+      <uri>model://depot_barrel_rack</uri>
+      <name>perimeter_cabinet_11</name>
+      <pose>2.375 1.3875000000000006 0.0 0 0 0.0</pose>
+    </include>
+    <include>
+      <uri>model://depot_barrel_rack</uri>
+      <name>perimeter_cabinet_12</name>
+      <pose>2.375 2.6125000000000003 0.0 0 0 0.0</pose>
+    </include>
+    <include>
+      <uri>model://depot_barrel_rack</uri>
+      <name>perimeter_cabinet_13</name>
+      <pose>2.375 3.837500000000001 0.0 0 0 0.0</pose>
+    </include>
+    <include>
+      <uri>model://depot_barrel_rack</uri>
+      <name>perimeter_cabinet_14</name>
+      <pose>2.375 5.0625 0.0 0 0 0.0</pose>
+    </include>
+    <include>
+      <uri>model://depot_barrel_rack</uri>
+      <name>perimeter_cabinet_15</name>
+      <pose>2.375 6.2875 0.0 0 0 0.0</pose>
+    </include>
+    <include>
+      <uri>model://depot_barrel_rack</uri>
+      <name>perimeter_cabinet_16</name>
+      <pose>-1.35 7.25 0.0 0 0 1.5707963267948966</pose>
+    </include>
+    <include>
+      <uri>model://depot_barrel_rack</uri>
+      <name>perimeter_cabinet_17</name>
+      <pose>-0.25 7.25 0.0 0 0 1.5707963267948966</pose>
+    </include>
+    <include>
+      <uri>model://depot_barrel_rack</uri>
+      <name>perimeter_cabinet_18</name>
+      <pose>0.8499999999999996 7.25 0.0 0 0 1.5707963267948966</pose>
+    </include>
+    <include>
+      <uri>model://depot_barrel_rack</uri>
+      <name>perimeter_cabinet_19</name>
+      <pose>-1.35 -3.0 0.0 0 0 -1.5707963267948966</pose>
+    </include>
+    <include>
+      <uri>model://depot_barrel_rack</uri>
+      <name>perimeter_cabinet_20</name>
+      <pose>-0.25 -3.0 0.0 0 0 -1.5707963267948966</pose>
+    </include>
+    <include>
+      <uri>model://depot_barrel_rack</uri>
+      <name>perimeter_cabinet_21</name>
+      <pose>0.8499999999999996 -3.0 0.0 0 0 -1.5707963267948966</pose>
+    </include>
+    <!-- Middle-left row block 5: height 3.0m -->
+    <model name="middle_left_5">
+      <static>true</static>
+      <pose>-0.25 1.75 1.5 0 0 0</pose>
+      <link name="stack_link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 3.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 3.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.25 0.1 1</ambient>
+            <diffuse>0.6 0.4 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <inertial>
+          <mass>3.0</mass>
+          <inertia>
+            <ixx>0.172</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.172</iyy>
+            <iyz>0</iyz>
+            <izz>0.042</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+
+  </world>
+</sdf>

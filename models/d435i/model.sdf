@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version='1.9'>
+  <model name='d435i'>
+    <pose>0 0 0 0 0 0</pose>
+    <self_collide>false</self_collide>
+    <static>false</static>
+    <link name="camera_link">
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.072</mass>
+        <inertia>
+          <ixx>0.003881243</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000498940</iyy>
+          <iyz>0</iyz>
+          <izz>0.003879257</izz>
+        </inertia>
+      </inertial>
+      <!-- URDF mesh origin: zero_depth_to_glass + glass_to_front, -cam_depth_py, 0 -->
+      <visual name="d435i/visual">
+        <pose>0.0043 -0.0175 0 1.5707963 0 1.5707963</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://d435/meshes/d435.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <!-- URDF collision box at (0, -0.0175, 0), size 0.02505 x 0.090 x 0.025 -->
+      <collision name="d435i/collision">
+        <pose>0 -0.0175 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.02505 0.090 0.025</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <!-- D435i RGB color camera: 424x240 @ 30 fps, HFOV 69.4 deg (RealSense stream) -->
+      <!-- URDF color frame offset: 0 0.015 0 from camera_link -->
+      <sensor name="d435i_color" type="camera">
+        <gz_frame_id>camera_link</gz_frame_id>
+        <pose>0 0.015 0 0 0 0</pose>
+        <camera>
+          <horizontal_fov>1.211</horizontal_fov>
+          <image>
+            <width>424</width>
+            <height>240</height>
+            <format>RGB_INT8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+          <optical_frame_id>camera_color_optical_frame</optical_frame_id>
+          <camera_info_topic>camera/color/camera_info</camera_info_topic>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>false</visualize>
+        <topic>camera/color/image_raw</topic>
+      </sensor>
+
+      <!-- D435i stereo depth module: 424x240 @ 30 fps, HFOV 87 deg (RealSense stream) -->
+      <sensor name="d435i_depth" type="depth_camera">
+        <gz_frame_id>camera_link</gz_frame_id>
+        <pose>0 0 0 0 0 0</pose>
+        <camera>
+          <horizontal_fov>1.518</horizontal_fov>
+          <image>
+            <width>424</width>
+            <height>240</height>
+            <format>R_FLOAT32</format>
+          </image>
+          <clip>
+            <near>0.105</near>
+            <far>10.0</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.005</stddev>
+          </noise>
+          <optical_frame_id>camera_depth_optical_frame</optical_frame_id>
+          <camera_info_topic>camera/aligned_depth_to_color/camera_info</camera_info_topic>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>false</visualize>
+        <topic>camera/aligned_depth_to_color/image_raw</topic>
+      </sensor>
+
+      <!-- D435i IMU (BMI055): URDF accel/gyro offset from camera_link -->
+      <sensor name="d435i_imu" type="imu">
+        <gz_frame_id>camera_imu_optical_frame</gz_frame_id>
+        <always_on>1</always_on>
+        <update_rate>200</update_rate>
+        <pose>-0.01174 -0.00552 0.0051 0 0 0</pose>
+        <imu>
+          <angular_velocity>
+            <x>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.00018665</stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.00018665</stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.00018665</stddev>
+              </noise>
+            </z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.00186</stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.00186</stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.00186</stddev>
+              </noise>
+            </z>
+          </linear_acceleration>
+        </imu>
+        <topic>camera/imu</topic>
+      </sensor>
+
+      <gravity>true</gravity>
+      <velocity_decay/>
+    </link>
+  </model>
+</sdf>

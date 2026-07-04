@@ -6,12 +6,12 @@
     </include>
     <include merge='true'>
       <uri>model://d435i</uri>
-      <pose>.138 .0175 .198 0 0 0</pose>
+      <pose>.138 .0175 .190 0 0 0</pose>
     </include>
     <joint name="CameraJoint" type="fixed">
       <parent>base_link</parent>
       <child>camera_link</child>
-      <pose relative_to="base_link">.138 .0175 .198 0 0 0</pose>
+      <pose relative_to="base_link">.138 .0175 .190 0 0 0</pose>
     </joint>
   </model>
 </sdf>

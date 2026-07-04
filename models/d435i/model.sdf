@@ -37,7 +37,7 @@
         </geometry>
       </collision>
 
-      <!-- D435i RGB color camera: 424x240 @ 30 fps, HFOV 69.4 deg (RealSense stream) -->
+      <!-- D435i RGB color camera: 848x480 @ 30 fps, HFOV 69.4 deg (RealSense stream) -->
       <!-- URDF color frame offset: 0 0.015 0 from camera_link -->
       <sensor name="d435i_color" type="camera">
         <gz_frame_id>camera_link</gz_frame_id>
@@ -45,8 +45,8 @@
         <camera>
           <horizontal_fov>1.211</horizontal_fov>
           <image>
-            <width>424</width>
-            <height>240</height>
+            <width>848</width>
+            <height>480</height>
             <format>RGB_INT8</format>
           </image>
           <clip>
@@ -67,15 +67,15 @@
         <topic>camera/color/image_raw</topic>
       </sensor>
 
-      <!-- D435i stereo depth module: 424x240 @ 30 fps, HFOV 87 deg (RealSense stream) -->
+      <!-- D435i stereo depth module: 848x480 @ 30 fps, HFOV 87 deg (RealSense stream) -->
       <sensor name="d435i_depth" type="depth_camera">
         <gz_frame_id>camera_link</gz_frame_id>
         <pose>0 0 0 0 0 0</pose>
         <camera>
           <horizontal_fov>1.518</horizontal_fov>
           <image>
-            <width>424</width>
-            <height>240</height>
+            <width>848</width>
+            <height>480</height>
             <format>R_FLOAT32</format>
           </image>
           <clip>

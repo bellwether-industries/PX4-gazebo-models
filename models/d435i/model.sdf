@@ -7,14 +7,14 @@
     <link name="camera_link">
       <inertial>
         <pose>0 0 0 0 0 0</pose>
-        <mass>0.072</mass>
+        <mass>0.001</mass>
         <inertia>
-          <ixx>0.003881243</ixx>
+          <ixx>1.0e-05</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.000498940</iyy>
+          <iyy>1.0e-05</iyy>
           <iyz>0</iyz>
-          <izz>0.003879257</izz>
+          <izz>1.0e-05</izz>
         </inertia>
       </inertial>
       <!-- URDF mesh origin: zero_depth_to_glass + glass_to_front, -cam_depth_py, 0 -->
@@ -67,12 +67,14 @@
         <topic>camera/color/image_raw</topic>
       </sensor>
 
-      <!-- D435i stereo depth module: 848x480 @ 30 fps, HFOV 87 deg (RealSense stream) -->
+      <!-- D435i aligned depth: registered to the COLOR sensor (pose, frame, and FOV
+           match d435i_color) so it emulates RealSense aligned_depth_to_color. This lets
+           depth_image_proc/point_cloud_xyzrgb fuse RGB+depth without a frame-id mismatch. -->
       <sensor name="d435i_depth" type="depth_camera">
         <gz_frame_id>camera_link</gz_frame_id>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0.015 0 0 0 0</pose>
         <camera>
-          <horizontal_fov>1.518</horizontal_fov>
+          <horizontal_fov>1.211</horizontal_fov>
           <image>
             <width>848</width>
             <height>480</height>
@@ -87,7 +89,7 @@
             <mean>0.0</mean>
             <stddev>0.005</stddev>
           </noise>
-          <optical_frame_id>camera_depth_optical_frame</optical_frame_id>
+          <optical_frame_id>camera_color_optical_frame</optical_frame_id>
           <camera_info_topic>camera/aligned_depth_to_color/camera_info</camera_info_topic>
         </camera>
         <always_on>1</always_on>

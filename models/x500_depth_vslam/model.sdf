@@ -13,5 +13,15 @@
       <child>camera_link</child>
       <pose relative_to="base_link">.138 .0175 .190 0 0 0</pose>
     </joint>
+
+    <!-- Small generic 2D lidar centered on FMUK66 top (FMU body center x~0.004; model z = base_link 0.24 + FMU top 0.0515) -->
+    <include merge='true'>
+      <uri>model://lidar_2d_generic</uri>
+      <pose>0.004 0 0.2915 0 0 0</pose>
+    </include>
+    <joint name="LidarGenericJoint" type="fixed">
+      <parent>base_link</parent>
+      <child>lidar_2d_generic_link</child>
+    </joint>
   </model>
 </sdf>

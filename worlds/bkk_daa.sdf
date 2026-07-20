@@ -35,7 +35,7 @@
 <!-- GUI camera with top-down view -->
 <gui>
   <camera name="user_camera">
-    <pose>0.0 0.0 20 0 1.57 0</pose>
+    <pose>1.0 -0.0 20 0 1.57 -1.5707963267948966</pose>
   </camera>
 </gui>
 
@@ -57,7 +57,7 @@
 <!-- Top-down camera directly above the grid -->
 <model name="top_camera">
   <static>true</static>
-  <pose>0.0 0.0 20 0 1.5708 0</pose>
+  <pose>1.0 -0.0 20 0 1.5708 -1.5707963267948966</pose>
   <link name="link">
     <sensor name="top_down_camera" type="camera">
       <pose>0 0 0 0 0 0</pose>
@@ -83,7 +83,7 @@
     <!-- Outer green ground plane (6x11) -->
     <model name="outer_ground_plane">
       <static>true</static>
-      <pose>-0.25 2.0 -0.01 0 0 0</pose>
+      <pose>3.0 0.25 -0.01 0 0 -1.5707963267948966</pose>
       <link name="link">
         <collision name="collision">
           <geometry>
@@ -123,7 +123,7 @@
     <!-- Main brown ground plane (4.5x9) with origin at bottom-left corner -->
     <model name="ground_plane">
       <static>true</static>
-      <pose>-0.25 2.0 0 0 0 0</pose>
+      <pose>3.0 0.25 0 0 0 -1.5707963267948966</pose>
       <link name="link">
         <collision name="collision">
           <geometry>
@@ -165,7 +165,7 @@
     <!-- Perimeter walls around outer green boundary (6x11) -->
     <model name="green_boundary_wall_north">
       <static>true</static>
-      <pose>-0.25 7.5 1.5 0 0 0</pose>
+      <pose>8.5 0.25 1.5 0 0 -1.5707963267948966</pose>
       <link name="link">
         <collision name="collision">
           <geometry>
@@ -371,7 +371,7 @@
 
     <model name="green_boundary_wall_south">
       <static>true</static>
-      <pose>-0.25 -3.5 1.5 0 0 0</pose>
+      <pose>-2.5 0.25 1.5 0 0 -1.5707963267948966</pose>
       <link name="link">
         <collision name="collision">
           <geometry>
@@ -577,7 +577,7 @@
 
     <model name="green_boundary_wall_east">
       <static>true</static>
-      <pose>2.75 2.0 1.5 0 0 0</pose>
+      <pose>3.0 -2.75 1.5 0 0 -1.5707963267948966</pose>
       <link name="link">
         <collision name="collision">
           <geometry>
@@ -873,7 +873,7 @@
 
     <model name="green_boundary_wall_west">
       <static>true</static>
-      <pose>-3.25 2.0 1.5 0 0 0</pose>
+      <pose>3.0 3.25 1.5 0 0 -1.5707963267948966</pose>
       <link name="link">
         <collision name="collision">
           <geometry>
@@ -1177,117 +1177,117 @@
     <include>
       <uri>model://depot_barrel_rack</uri>
       <name>perimeter_cabinet_00</name>
-      <pose>-2.875 -2.2874999999999996 0.0 0 0 3.141592653589793</pose>
+      <pose>-1.2874999999999996 2.875 0.0 0 0 1.5707963267948966</pose>
     </include>
     <include>
       <uri>model://depot_barrel_rack</uri>
       <name>perimeter_cabinet_01</name>
-      <pose>-2.875 -1.0624999999999998 0.0 0 0 3.141592653589793</pose>
+      <pose>-0.06249999999999978 2.875 0.0 0 0 1.5707963267948966</pose>
     </include>
     <include>
       <uri>model://depot_barrel_rack</uri>
       <name>perimeter_cabinet_02</name>
-      <pose>-2.875 0.1625000000000001 0.0 0 0 3.141592653589793</pose>
+      <pose>1.1625 2.875 0.0 0 0 1.5707963267948966</pose>
     </include>
     <include>
       <uri>model://depot_barrel_rack</uri>
       <name>perimeter_cabinet_03</name>
-      <pose>-2.875 1.3875000000000006 0.0 0 0 3.141592653589793</pose>
+      <pose>2.3875000000000006 2.875 0.0 0 0 1.5707963267948966</pose>
     </include>
     <include>
       <uri>model://depot_barrel_rack</uri>
       <name>perimeter_cabinet_04</name>
-      <pose>-2.875 2.6125000000000003 0.0 0 0 3.141592653589793</pose>
+      <pose>3.6125000000000007 2.875 0.0 0 0 1.5707963267948966</pose>
     </include>
     <include>
       <uri>model://depot_barrel_rack</uri>
       <name>perimeter_cabinet_05</name>
-      <pose>-2.875 3.837500000000001 0.0 0 0 3.141592653589793</pose>
+      <pose>4.8375 2.875 0.0 0 0 1.5707963267948966</pose>
     </include>
     <include>
       <uri>model://depot_barrel_rack</uri>
       <name>perimeter_cabinet_06</name>
-      <pose>-2.875 5.0625 0.0 0 0 3.141592653589793</pose>
+      <pose>6.0625 2.875 0.0 0 0 1.5707963267948966</pose>
     </include>
     <include>
       <uri>model://depot_barrel_rack</uri>
       <name>perimeter_cabinet_07</name>
-      <pose>-2.875 6.2875 0.0 0 0 3.141592653589793</pose>
+      <pose>7.2875 2.875 0.0 0 0 1.5707963267948966</pose>
     </include>
     <include>
       <uri>model://depot_barrel_rack</uri>
       <name>perimeter_cabinet_08</name>
-      <pose>2.375 -2.2874999999999996 0.0 0 0 0.0</pose>
+      <pose>-1.2874999999999996 -2.375 0.0 0 0 -1.5707963267948966</pose>
     </include>
     <include>
       <uri>model://depot_barrel_rack</uri>
       <name>perimeter_cabinet_09</name>
-      <pose>2.375 -1.0624999999999998 0.0 0 0 0.0</pose>
+      <pose>-0.06249999999999978 -2.375 0.0 0 0 -1.5707963267948966</pose>
     </include>
     <include>
       <uri>model://depot_barrel_rack</uri>
       <name>perimeter_cabinet_10</name>
-      <pose>2.375 0.1625000000000001 0.0 0 0 0.0</pose>
+      <pose>1.1625 -2.375 0.0 0 0 -1.5707963267948966</pose>
     </include>
     <include>
       <uri>model://depot_barrel_rack</uri>
       <name>perimeter_cabinet_11</name>
-      <pose>2.375 1.3875000000000006 0.0 0 0 0.0</pose>
+      <pose>2.3875000000000006 -2.375 0.0 0 0 -1.5707963267948966</pose>
     </include>
     <include>
       <uri>model://depot_barrel_rack</uri>
       <name>perimeter_cabinet_12</name>
-      <pose>2.375 2.6125000000000003 0.0 0 0 0.0</pose>
+      <pose>3.6125000000000007 -2.375 0.0 0 0 -1.5707963267948966</pose>
     </include>
     <include>
       <uri>model://depot_barrel_rack</uri>
       <name>perimeter_cabinet_13</name>
-      <pose>2.375 3.837500000000001 0.0 0 0 0.0</pose>
+      <pose>4.8375 -2.375 0.0 0 0 -1.5707963267948966</pose>
     </include>
     <include>
       <uri>model://depot_barrel_rack</uri>
       <name>perimeter_cabinet_14</name>
-      <pose>2.375 5.0625 0.0 0 0 0.0</pose>
+      <pose>6.0625 -2.375 0.0 0 0 -1.5707963267948966</pose>
     </include>
     <include>
       <uri>model://depot_barrel_rack</uri>
       <name>perimeter_cabinet_15</name>
-      <pose>2.375 6.2875 0.0 0 0 0.0</pose>
+      <pose>7.2875 -2.375 0.0 0 0 -1.5707963267948966</pose>
     </include>
     <include>
       <uri>model://depot_barrel_rack</uri>
       <name>perimeter_cabinet_16</name>
-      <pose>-1.35 7.25 0.0 0 0 1.5707963267948966</pose>
+      <pose>8.25 1.35 0.0 0 0 0.0</pose>
     </include>
     <include>
       <uri>model://depot_barrel_rack</uri>
       <name>perimeter_cabinet_17</name>
-      <pose>-0.25 7.25 0.0 0 0 1.5707963267948966</pose>
+      <pose>8.25 0.25 0.0 0 0 0.0</pose>
     </include>
     <include>
       <uri>model://depot_barrel_rack</uri>
       <name>perimeter_cabinet_18</name>
-      <pose>0.8499999999999996 7.25 0.0 0 0 1.5707963267948966</pose>
+      <pose>8.25 -0.8499999999999996 0.0 0 0 0.0</pose>
     </include>
     <include>
       <uri>model://depot_barrel_rack</uri>
       <name>perimeter_cabinet_19</name>
-      <pose>-1.35 -3.0 0.0 0 0 -1.5707963267948966</pose>
+      <pose>-2.0 1.35 0.0 0 0 -3.141592653589793</pose>
     </include>
     <include>
       <uri>model://depot_barrel_rack</uri>
       <name>perimeter_cabinet_20</name>
-      <pose>-0.25 -3.0 0.0 0 0 -1.5707963267948966</pose>
+      <pose>-2.0 0.25 0.0 0 0 -3.141592653589793</pose>
     </include>
     <include>
       <uri>model://depot_barrel_rack</uri>
       <name>perimeter_cabinet_21</name>
-      <pose>0.8499999999999996 -3.0 0.0 0 0 -1.5707963267948966</pose>
+      <pose>-2.0 -0.8499999999999996 0.0 0 0 -3.141592653589793</pose>
     </include>
     <!-- Middle-left row block 5: height 3.0m -->
     <model name="middle_left_5">
       <static>true</static>
-      <pose>-0.25 1.75 1.5 0 0 0</pose>
+      <pose>3.25 0.25 1.5 0 0 -1.5707963267948966</pose>
       <link name="stack_link">
         <collision name="collision">
           <geometry>

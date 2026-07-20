@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version='1.9'>
+  <model name='OakD-Lite-vslam'>
+    <pose>0 0 0 0 0 0</pose>
+    <self_collide>false</self_collide>
+    <static>false</static>
+    <link name="camera_link">
+      <inertial>
+        <pose>0.00358 -0.03 .014 0 0 0</pose>
+        <mass>0.061</mass>
+        <inertia>
+          <ixx>0.0000460804</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0000055421</iyy>
+          <iyz>0</iyz>
+          <izz>0.0000436519</izz>
+        </inertia>
+      </inertial>
+      <visual name="OakD-Lite-vslam/visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://OakD-Lite-vslam/meshes/OakDLite.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="OakD-Lite-vslam/collision">
+        <pose>0.00358 -0.03 .014 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.0175 0.091 0.028</size>
+          </box>
+        </geometry>
+      </collision>
+      <!-- RGB + depth at matching 320x240 @ 15 Hz (RealSense-aligned topics for ORB-SLAM3 / depth_image_proc). -->
+      <sensor name="IMX214" type="camera">
+        <gz_frame_id>camera_link</gz_frame_id>
+        <pose>0.01233 -0.03 .01878 0 0 0</pose>
+        <camera>
+          <horizontal_fov>1.518</horizontal_fov>
+          <image>
+            <width>320</width>
+            <height>240</height>
+            <format>RGB_INT8</format>
+          </image>
+          <clip>
+            <near>0.2</near>
+            <far>19.1</far>
+          </clip>
+          <optical_frame_id>camera_color_optical_frame</optical_frame_id>
+          <camera_info_topic>camera/color/camera_info</camera_info_topic>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>15</update_rate>
+        <visualize>false</visualize>
+        <topic>camera/color/image_raw</topic>
+      </sensor>
+      <sensor name="StereoOV7251" type="depth_camera">
+        <gz_frame_id>camera_link</gz_frame_id>
+        <pose>0.01233 -0.03 .01878 0 0 0</pose>
+        <camera>
+          <horizontal_fov>1.518</horizontal_fov>
+          <image>
+            <width>320</width>
+            <height>240</height>
+            <format>R_FLOAT32</format>
+          </image>
+          <clip>
+            <near>0.2</near>
+            <far>19.1</far>
+          </clip>
+          <optical_frame_id>camera_color_optical_frame</optical_frame_id>
+          <camera_info_topic>camera/aligned_depth_to_color/camera_info</camera_info_topic>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>15</update_rate>
+        <visualize>false</visualize>
+        <topic>camera/aligned_depth_to_color/image_raw</topic>
+      </sensor>
+      <gravity>true</gravity>
+      <velocity_decay />
+    </link>
+    <!-- <plugin filename="ignition-gazebo-sensors-system"
+    name="ignition::gazebo::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin> -->
+  </model>
+</sdf>

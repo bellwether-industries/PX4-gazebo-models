@@ -37,7 +37,7 @@
         </geometry>
       </collision>
 
-      <!-- D435i RGB color camera: 848x480 @ 15 fps, HFOV 69.4 deg (RealSense stream) -->
+      <!-- D435i RGB color camera: 848x480 @ 30 fps, HFOV 69.4 deg (RealSense stream) -->
       <!-- URDF color frame offset: 0 0.015 0 from camera_link -->
       <sensor name="d435i_color" type="camera">
         <gz_frame_id>camera_link</gz_frame_id>
@@ -62,7 +62,7 @@
           <camera_info_topic>camera/color/camera_info</camera_info_topic>
         </camera>
         <always_on>1</always_on>
-        <update_rate>15</update_rate>
+        <update_rate>30</update_rate>
         <visualize>false</visualize>
         <topic>camera/color/image_raw</topic>
       </sensor>
@@ -93,7 +93,7 @@
           <camera_info_topic>camera/aligned_depth_to_color/camera_info</camera_info_topic>
         </camera>
         <always_on>1</always_on>
-        <update_rate>15</update_rate>
+        <update_rate>30</update_rate>
         <visualize>false</visualize>
         <topic>camera/aligned_depth_to_color/image_raw</topic>
       </sensor>

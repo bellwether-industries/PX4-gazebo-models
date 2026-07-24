@@ -34,7 +34,7 @@
     <include>
       <static>true</static>
       <name>staging_area</name>
-      <pose>-23 0 0 0 0 0</pose>
+      <pose>-23 0 -0.28 0 0 0</pose>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Starting Area Type B</uri>
     </include>
 
@@ -43,14 +43,14 @@
     <include>
       <static>true</static>
       <name>base_station</name>
-      <pose>-31 0 0 0 0 -1.5708</pose>
+      <pose>-31 0 -0.28 0 0 -1.5708</pose>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Base Station</uri>
     </include>
 
     <!-- Fiducial marking the origin for artifacts reports -->
     <include>
       <name>artifact_origin</name>
-      <pose>-13 0.0 0.0 0 0 0</pose>
+      <pose>-13 0.0 -0.28 0 0 0</pose>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Fiducial</uri>
     </include>
 
@@ -58,415 +58,415 @@
     <include>
       <name>cave_cap_1</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Cap Type B</uri>
-      <pose>202 175.000000 10.000000 0 0 3.141593</pose>
+      <pose>202 175.000000 9.72 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>tile_1</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 01 Type B</uri>
-      <pose>202 150.000000 10.000000 0 0 3.141593</pose>
+      <pose>202 150.000000 9.72 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>backpack_1</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/JanSport Backpack Red</uri>
-      <pose>204.1 150.330000 10.430000 0 0 -1.535890</pose>
+      <pose>204.1 150.330000 10.15 0 0 -1.535890</pose>
     </include>
 
     <include>
       <name>phone_1</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Samsung J8 Black</uri>
-      <pose>202 160.600000 10.000000 -1.570796 0 0.104720</pose>
+      <pose>202 160.600000 9.72 -1.570796 0 0.104720</pose>
     </include>
 
     <include>
       <name>tile_2</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Corner 01 Type B</uri>
-      <pose>2 125.000000 0.000000 0 0 3.141593</pose>
+      <pose>2 125.000000 -0.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>tile_3</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 02 Type B</uri>
-      <pose>27 125.000000 0.000000 0 0 1.570796</pose>
+      <pose>27 125.000000 -0.28 0 0 1.570796</pose>
     </include>
 
     <include>
       <name>tile_4</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 01 Type B</uri>
-      <pose>52 125.000000 0.000000 0 0 1.570796</pose>
+      <pose>52 125.000000 -0.28 0 0 1.570796</pose>
     </include>
 
     <include>
       <name>phone_2</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Samsung J8 Black</uri>
-      <pose>52.56 125.240000 0.370000 -1.630138 0 0.189892</pose>
+      <pose>52.56 125.240000 0.09 -1.630138 0 0.189892</pose>
     </include>
 
     <include>
       <name>tile_5</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 02 Type B</uri>
-      <pose>77 125.000000 0.000000 0 0 -1.570796</pose>
+      <pose>77 125.000000 -0.28 0 0 -1.570796</pose>
     </include>
 
     <include>
       <name>tile_6</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 05 Type B</uri>
-      <pose>102 125.000000 0.000000 0 0 1.570796</pose>
+      <pose>102 125.000000 -0.28 0 0 1.570796</pose>
     </include>
 
     <include>
       <name>tile_7</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave 3 Way 01 Type B</uri>
-      <pose>127 125.000000 0.000000 0 0 3.141593</pose>
+      <pose>127 125.000000 -0.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>rescue_randy_1</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Rescue Randy Sitting</uri>
-      <pose>127 133.650000 0.760000 0 0 0.000000</pose>
+      <pose>127 133.650000 0.48 0 0 0.000000</pose>
     </include>
 
     <include>
       <name>tile_8</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Elevation Type B</uri>
-      <pose>152 125.000000 0.000000 0 0 1.570796</pose>
+      <pose>152 125.000000 -0.28 0 0 1.570796</pose>
     </include>
 
     <include>
       <name>tile_9</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave 3 Way 01 Type B</uri>
-      <pose>177 125.000000 10.000000 0 0 3.141593</pose>
+      <pose>177 125.000000 9.72 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>tile_10</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Corner 01 Type B</uri>
-      <pose>202 125.000000 10.000000 0 0 0.000000</pose>
+      <pose>202 125.000000 9.72 0 0 0.000000</pose>
     </include>
 
     <include>
       <name>tile_11</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 03 Type B</uri>
-      <pose>2 100.000000 0.000000 0 0 0.000000</pose>
+      <pose>2 100.000000 -0.28 0 0 0.000000</pose>
     </include>
 
     <include>
       <name>rescue_randy_2</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Rescue Randy Sitting</uri>
-      <pose>3.67 103.910000 1.180000 0.260054 0 0.000000</pose>
+      <pose>3.67 103.910000 0.9 0.260054 0 0.000000</pose>
     </include>
 
     <include>
       <name>tile_12</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 04 Type B</uri>
-      <pose>127 100.000000 0.000000 0 0 3.141593</pose>
+      <pose>127 100.000000 -0.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>backpack_2</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/JanSport Backpack Red</uri>
-      <pose>127 102.110000 0.500000 0 0.200015 2.539978</pose>
+      <pose>127 102.110000 0.22 0 0.200015 2.539978</pose>
     </include>
 
     <include>
       <name>tile_13</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Elevation Type B</uri>
-      <pose>177 100.000000 0.000000 0 0 3.141593</pose>
+      <pose>177 100.000000 -0.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>tile_14</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 01 Type B</uri>
-      <pose>2 75.000000 0.000000 0 0 0.000000</pose>
+      <pose>2 75.000000 -0.28 0 0 0.000000</pose>
     </include>
 
     <include>
       <name>tile_15</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Corner 02 Type B</uri>
-      <pose>77 75.000000 0.000000 0 0 -3.141593</pose>
+      <pose>77 75.000000 -0.28 0 0 -3.141593</pose>
     </include>
 
     <include>
       <name>tile_16</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 05 Type B</uri>
-      <pose>102 75.000000 0.000000 0 0 1.570796</pose>
+      <pose>102 75.000000 -0.28 0 0 1.570796</pose>
     </include>
 
     <include>
       <name>tile_17</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave 3 Way 01 Type B</uri>
-      <pose>127 75.000000 0.000000 0 0 1.570796</pose>
+      <pose>127 75.000000 -0.28 0 0 1.570796</pose>
     </include>
 
     <include>
       <name>tile_18</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Elevation Type B</uri>
-      <pose>177 75.000000 -10.000000 0 0 3.141593</pose>
+      <pose>177 75.000000 -10.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>tile_19</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 05 Type B</uri>
-      <pose>2 50.000000 0.000000 0 0 0.000000</pose>
+      <pose>2 50.000000 -0.28 0 0 0.000000</pose>
     </include>
 
     <include>
       <name>tile_20</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 04 Type B</uri>
-      <pose>77 50.000000 0.000000 0 0 3.141593</pose>
+      <pose>77 50.000000 -0.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>tile_21</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Elevation Type B</uri>
-      <pose>127 50.000000 -10.000000 0 0 3.141593</pose>
+      <pose>127 50.000000 -10.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>cave_cap_2</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Cap Type B</uri>
-      <pose>152 50.000000 -10.000000 0 0 -1.570796</pose>
+      <pose>152 50.000000 -10.28 0 0 -1.570796</pose>
     </include>
 
     <include>
       <name>tile_22</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave 3 Way 01 Type B</uri>
-      <pose>177 50.000000 -10.000000 0 0 1.570796</pose>
+      <pose>177 50.000000 -10.28 0 0 1.570796</pose>
     </include>
 
     <include>
       <name>tile_23</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 04 Type B</uri>
-      <pose>2 25.000000 0.000000 0 0 3.141593</pose>
+      <pose>2 25.000000 -0.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>tile_24</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 01 Type B</uri>
-      <pose>77 25.000000 0.000000 0 0 0.000000</pose>
+      <pose>77 25.000000 -0.28 0 0 0.000000</pose>
     </include>
 
     <include>
       <name>tile_25</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 02 Type B</uri>
-      <pose>127 25.000000 -10.000000 0 0 0.000000</pose>
+      <pose>127 25.000000 -10.28 0 0 0.000000</pose>
     </include>
 
     <include>
       <name>tile_26</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 04 Type B</uri>
-      <pose>177 25.000000 -10.000000 0 0 0.000000</pose>
+      <pose>177 25.000000 -10.28 0 0 0.000000</pose>
     </include>
 
     <include>
       <name>tile_27</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave 3 Way 01 Type B</uri>
-      <pose>2 0.000000 0.000000 0 0 1.570796</pose>
+      <pose>2 0.000000 -0.28 0 0 1.570796</pose>
     </include>
 
     <include>
       <name>tile_28</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 04 Type B</uri>
-      <pose>77 0.000000 0.000000 0 0 0.000000</pose>
+      <pose>77 0.000000 -0.28 0 0 0.000000</pose>
     </include>
 
     <include>
       <name>tile_29</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Elevation Type B</uri>
-      <pose>127 0.000000 -20.000000 0 0 3.141593</pose>
+      <pose>127 0.000000 -20.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>tile_30</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Elevation Type B</uri>
-      <pose>177 0.000000 -20.000000 0 0 3.141593</pose>
+      <pose>177 0.000000 -20.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>tile_31</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Elevation Type B</uri>
-      <pose>2 -25.000000 -10.000000 0 0 3.141593</pose>
+      <pose>2 -25.000000 -10.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>tile_32</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Elevation Type B</uri>
-      <pose>77 -25.000000 -10.000000 0 0 3.141593</pose>
+      <pose>77 -25.000000 -10.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>phone_3</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Samsung J8 Black</uri>
-      <pose>76.77 -24.630000 -4.750000 -1.159946 0 0.000000</pose>
+      <pose>76.77 -24.630000 -5.03 -1.159946 0 0.000000</pose>
     </include>
 
     <include>
       <name>tile_33</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 03 Type B</uri>
-      <pose>127 -25.000000 -20.000000 0 0 3.141593</pose>
+      <pose>127 -25.000000 -20.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>tile_34</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 01 Type B</uri>
-      <pose>177 -25.000000 -20.000000 0 0 3.141593</pose>
+      <pose>177 -25.000000 -20.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>tile_35</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Corner 02 Type B</uri>
-      <pose>2 -50.000000 -10.000000 0 0 -1.570796</pose>
+      <pose>2 -50.000000 -10.28 0 0 -1.570796</pose>
     </include>
 
     <include>
       <name>tile_36</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Corner 01 Type B</uri>
-      <pose>27 -50.000000 -10.000000 0 0 1.570796</pose>
+      <pose>27 -50.000000 -10.28 0 0 1.570796</pose>
     </include>
 
     <include>
       <name>phone_4</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Samsung J8 Black</uri>
-      <pose>27.26 -45.820000 -10.150000 -1.620015 0.139626 0.370010</pose>
+      <pose>27.26 -45.820000 -10.43 -1.620015 0.139626 0.370010</pose>
     </include>
 
     <include>
       <name>tile_37</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Elevation Type B</uri>
-      <pose>77 -50.000000 -20.000000 0 0 3.141593</pose>
+      <pose>77 -50.000000 -20.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>tile_38</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Corner 01 Type B</uri>
-      <pose>127 -50.000000 -20.000000 0 0 -1.570796</pose>
+      <pose>127 -50.000000 -20.28 0 0 -1.570796</pose>
     </include>
 
     <include>
       <name>backpack_3</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/JanSport Backpack Red</uri>
-      <pose>127.56 -49.220000 -19.675000 0 0 -0.619941</pose>
+      <pose>127.56 -49.220000 -19.955 0 0 -0.619941</pose>
     </include>
 
     <include>
       <name>tile_39</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave 3 Way 01 Type B</uri>
-      <pose>152 -50.000000 -20.000000 0 0 3.141593</pose>
+      <pose>152 -50.000000 -20.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>tile_40</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Corner 02 Type B</uri>
-      <pose>177 -50.000000 -20.000000 0 0 0.000000</pose>
+      <pose>177 -50.000000 -20.28 0 0 0.000000</pose>
     </include>
 
     <include>
       <name>tile_41</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Elevation Type B</uri>
-      <pose>27 -75.000000 -20.000000 0 0 3.141593</pose>
+      <pose>27 -75.000000 -20.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>tile_42</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Elevation Type B</uri>
-      <pose>77 -75.000000 -30.000000 0 0 3.141593</pose>
+      <pose>77 -75.000000 -30.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>tile_43</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 05 Type B</uri>
-      <pose>152 -75.000000 -20.000000 0 0 0.000000</pose>
+      <pose>152 -75.000000 -20.28 0 0 0.000000</pose>
     </include>
 
     <include>
       <name>tile_44</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 01 Type B</uri>
-      <pose>27 -100.000000 -20.000000 0 0 0.000000</pose>
+      <pose>27 -100.000000 -20.28 0 0 0.000000</pose>
     </include>
 
     <include>
       <name>tile_45</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 02 Type B</uri>
-      <pose>77 -100.000000 -30.000000 0 0 3.141593</pose>
+      <pose>77 -100.000000 -30.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>backpack_4</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/JanSport Backpack Red</uri>
-      <pose>77.04 -109.110000 -30.220000 -0.087266 0 -1.396263</pose>
+      <pose>77.04 -109.110000 -30.5 -0.087266 0 -1.396263</pose>
     </include>
 
     <include>
       <name>tile_46</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Elevation Type B</uri>
-      <pose>152 -100.000000 -30.000000 0 0 3.141593</pose>
+      <pose>152 -100.000000 -30.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>tile_47</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Elevation Type B</uri>
-      <pose>27 -125.000000 -30.000000 0 0 3.141593</pose>
+      <pose>27 -125.000000 -30.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>tile_48</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 04 Type B</uri>
-      <pose>77 -125.000000 -30.000000 0 0 3.141593</pose>
+      <pose>77 -125.000000 -30.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>tile_49</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Elevation Type B</uri>
-      <pose>152 -125.000000 -40.000000 0 0 3.141593</pose>
+      <pose>152 -125.000000 -40.28 0 0 3.141593</pose>
     </include>
 
     <include>
       <name>tile_50</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Corner 01 Type B</uri>
-      <pose>27 -150.000000 -30.000000 0 0 -1.570796</pose>
+      <pose>27 -150.000000 -30.28 0 0 -1.570796</pose>
     </include>
 
     <include>
       <name>tile_51</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 02 Type B</uri>
-      <pose>52 -150.000000 -30.000000 0 0 1.570796</pose>
+      <pose>52 -150.000000 -30.28 0 0 1.570796</pose>
     </include>
 
     <include>
       <name>tile_52</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave 3 Way 01 Type B</uri>
-      <pose>77 -150.000000 -30.000000 0 0 0.000000</pose>
+      <pose>77 -150.000000 -30.28 0 0 0.000000</pose>
     </include>
 
     <include>
       <name>rescue_randy_3</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Rescue Randy Sitting</uri>
-      <pose>79.21 -142.470000 -29.880000 -0.049916 0 -1.570796</pose>
+      <pose>79.21 -142.470000 -30.16 -0.049916 0 -1.570796</pose>
     </include>
 
     <include>
       <name>tile_53</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Straight 01 Type B</uri>
-      <pose>102 -150.000000 -30.000000 0 0 -1.570796</pose>
+      <pose>102 -150.000000 -30.28 0 0 -1.570796</pose>
     </include>
 
     <include>
       <name>tile_54</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Elevation Type B</uri>
-      <pose>127 -150.000000 -40.000000 0 0 -1.570796</pose>
+      <pose>127 -150.000000 -40.28 0 0 -1.570796</pose>
     </include>
 
     <include>
       <name>tile_55</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Cave Corner 01 Type B</uri>
-      <pose>152 -150.000000 -40.000000 0 0 0.000000</pose>
+      <pose>152 -150.000000 -40.28 0 0 0.000000</pose>
     </include>
 
     <include>
       <name>rescue_randy_4</name>
       <uri>https://fuel.ignitionrobotics.org/1.0/OpenRobotics/models/Rescue Randy Sitting</uri>
-      <pose>154.86 -149.970000 -40.000000 -0.099484 0 -1.658063</pose>
+      <pose>154.86 -149.970000 -40.28 -0.099484 0 -1.658063</pose>
     </include>
 
     <spherical_coordinates>

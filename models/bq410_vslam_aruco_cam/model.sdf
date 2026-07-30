@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sdf version='1.9'>
-  <model name='bq410_vslam_precland'>
+  <model name='bq410_vslam_aruco_cam'>
     <self_collide>false</self_collide>
     <include merge='true'>
       <uri>bq410</uri>

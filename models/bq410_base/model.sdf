@@ -7,19 +7,21 @@
     <link name="base_link">
       <!-- Mass: 1.083 kg measured base (everything except the 4 x 0.012 kg DJI 9450
            props, which are the rotor links); 1.131 kg all-up.
-           Inertia: full-vehicle MOI (Jxx 0.005178, Jyy 0.004759, Jzz 0.010900,
-           props included) minus the 4 rotor links (own inertia + parallel axis).
+           Inertia: full-vehicle MOI (Jxx 0.009749, Jyy 0.008251, Jzz 0.014972,
+           props included; estimate - the measured set 0.005178/0.004759/0.010900
+           violates Jxx+Jyy >= Jzz) minus the 4 rotor links (own inertia +
+           parallel axis).
            Prop inertia: DJI 9450 as thin rod, L = 9.4in = 0.2388 m, m = 12 g:
            izz = mL^2/12 = 5.70e-5, ixx = iyy = izz/2 (rotation-averaged). -->
       <inertial>
         <mass>1.083</mass>
         <inertia>
-          <ixx>0.003750</ixx>
+          <ixx>0.008321</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.003737</iyy>
+          <iyy>0.007229</iyy>
           <iyz>0</iyz>
-          <izz>0.008646</izz>
+          <izz>0.012718</izz>
         </inertia>
       </inertial>
       <gravity>true</gravity>

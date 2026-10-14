@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version='1.9'>
+  <model name='gm3_gimbal'>
+    <self_collide>false</self_collide>
+    <static>false</static>
+
+    <!-- CaddxFPV Gimbal GM3 V2: 3-axis (yaw/pitch/roll) mechanical stabilization
+         gimbal for digital FPV, 48 g total, +/-0.005 deg stabilization accuracy,
+         +/-1500 deg/s max tracking speed, PWM/UART (head-tracking) control.
+         Source: https://www.caddxfpv.com/products/caddxfpv-gimbal-gm3-v2
+
+         The source Blender model (q410-gz-body.blend) only has ONE combined
+         housing mesh for the gimbal body (not decomposed per rotation axis
+         the way the reference model://gimbal has 4 separate arm meshes), so
+         this model uses a simplified-but-equivalent structure: a static
+         housing link + a yaw -> roll -> pitch joint chain with zero-length
+         intermediate links (no separate visuals, since we don't have that
+         geometry), ending at gimbal_camera_link. All 3 joint pivots are placed at
+         the same point (where the camera mesh sits relative to the housing),
+         a reasonable approximation given the undecomposed source geometry.
+
+         Joint ranges are not published by Caddx; the values below are
+         typical-for-this-class-of-FPV-gimbal estimates (documented per
+         joint below), not measured/spec'd figures. -->
+    <!-- Installation: modelled as mounted on bq410 HANGING (inverted), as in
+         q410-gz-body.blend. Model frame = Gimbal_GM3 object origin, body
+         aligned (include it with zero rotation). Only the housing/camera
+         meshes are flipped; the joint chain, camera sensor and IMU are upright
+         so PX4's gimbal v2 commands (FRD: yaw about down, roll about forward,
+         pitch about right) and the IMU attitude match the GM3 running in its
+         inverted-mount mode. Joint axes follow model://gimbal as included in
+         x500_gimbal. PX4 GZBridge: commands /model/<model>/command/gimbal_*,
+         IMU from link camera_link / sensor camera_imu. -->
+    <link name="gm3_mount_link">
+      <inertial>
+        <mass>0.035</mass>
+        <inertia>
+          <ixx>0.0001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0001</iyy>
+          <iyz>0</iyz>
+          <izz>0.0001</izz>
+        </inertia>
+      </inertial>
+      <visual name="gm3_mount_visual">
+        <!-- Housing GLB is authored upright; flipped 180 deg about X because
+             the GM3 hangs inverted under the bq410 nose (Blender Gimbal_GM3
+             rotation = Rx(180)). -->
+        <pose>0 0 0 3.1415927 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://gm3_gimbal/meshes/Gimbal-GM3-housing.glb</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <!-- Measured Gimbal-GM3-housing.glb bounding box. The size was already
+           right; only the centre was missing, leaving the box about 7 mm low
+           in Z relative to the mesh. -->
+      <collision name="gm3_mount_collision">
+        <pose>0.001638 0.000794 -0.007027 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.046843 0.046439 0.053354</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <min_depth>0.001</min_depth>
+              <max_vel>0</max_vel>
+            </ode>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+    </link>
+
+    <!-- Yaw joint (pan). Range not published; +/-150 deg is a typical FPV
+         head-tracking pan range (not full continuous, since the GM3 is a
+         stabilization/head-tracking gimbal, not a full pan-tilt-zoom turret). -->
+    <joint name="gm3_yaw_joint" type="revolute">
+      <parent>gm3_mount_link</parent>
+      <child>gm3_yaw_link</child>
+      <pose>0.013018 0.000926 -0.021199 0 0 0</pose>
+      <axis>
+        <xyz>0 0 -1</xyz>
+        <limit>
+          <lower>-2.61799</lower>
+          <upper>2.61799</upper>
+          <effort>10</effort>
+          <velocity>26.18</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.05</damping>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <implicit_spring_damper>1</implicit_spring_damper>
+          <limit>
+            <cfm>0.1</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name="gm3_yaw_link">
+      <inertial>
+        <mass>0.005</mass>
+        <inertia>
+          <ixx>1.0e-06</ixx>
+          <iyy>1.0e-06</iyy>
+          <izz>1.0e-06</izz>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyz>0.0</iyz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <!-- Roll joint. +/-45 deg matches the range used by the reference
+         model://gimbal for its roll axis; the GM3 doesn't publish a figure,
+         but this is a reasonable range for a stabilization roll axis. -->
+    <joint name="gm3_roll_joint" type="revolute">
+      <parent>gm3_yaw_link</parent>
+      <child>gm3_roll_link</child>
+      <pose>0.013018 0.000926 -0.021199 0 0 0</pose>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-0.785398</lower>
+          <upper>0.785398</upper>
+          <effort>10</effort>
+          <velocity>26.18</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.05</damping>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <implicit_spring_damper>1</implicit_spring_damper>
+          <limit>
+            <cfm>0.1</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name="gm3_roll_link">
+      <inertial>
+        <mass>0.005</mass>
+        <inertia>
+          <ixx>1.0e-06</ixx>
+          <iyy>1.0e-06</iyy>
+          <izz>1.0e-06</izz>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyz>0.0</iyz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <!-- Pitch joint. -90/+90 deg gives generous look up/down range typical
+         of FPV head-tracking gimbals; not a published Caddx figure. -->
+    <joint name="gm3_pitch_joint" type="revolute">
+      <parent>gm3_roll_link</parent>
+      <child>camera_link</child>
+      <pose>0.013018 0.000926 -0.021199 0 0 0</pose>
+      <axis>
+        <xyz>0 -1 0</xyz>
+        <limit>
+          <lower>-1.5708</lower>
+          <upper>1.5708</upper>
+          <effort>10</effort>
+          <velocity>26.18</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.05</damping>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <implicit_spring_damper>1</implicit_spring_damper>
+          <limit>
+            <cfm>0.1</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+
+    <!-- Walksnail Avatar HD Pro camera: 1/1.8" Sony Starvis II sensor, 160 deg
+         FOV, F1.6, 1080p/60fps (720p/120fps mode also supported), ~9.5 g.
+         Source: https://www.caddxfpv.com/products/walksnail-avatar-hd-pro-kit-dual-antenna
+         horizontal_fov below is the full 160 deg spec converted to radians;
+         resolution set to the 1080p60 mode. An IMU is included since the GM3
+         performs closed-loop mechanical stabilization (needs its own rate
+         sensing on the camera head); noise params are reused from the
+         proven model://gimbal reference (no published GM3 IMU noise spec). -->
+    <link name="camera_link">
+      <inertial>
+        <mass>0.0095</mass>
+        <inertia>
+          <ixx>1.0e-06</ixx>
+          <iyy>1.0e-06</iyy>
+          <izz>1.0e-06</izz>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyz>0.0</iyz>
+        </inertia>
+      </inertial>
+      <visual name="camera_visual">
+        <pose>0 0 0 3.1415927 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://gm3_gimbal/meshes/FPV-Walksnail-Camera.glb</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <!-- Measured FPV-Walksnail-Camera.glb bounding box, 38.57 x 18.95 x
+           20.25 mm. The size previously had X and Y transposed, and the box
+           sat at the link origin while the mesh spans z 0.011 to 0.031. -->
+      <collision name="camera_collision">
+        <pose>0.009981 0.000967 -0.021365 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.038565 0.018950 0.020248</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <min_depth>0.001</min_depth>
+              <max_vel>0</max_vel>
+            </ode>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+
+      <sensor name="camera_imu" type="imu">
+        <gz_frame_id>gimbal_camera_link</gz_frame_id>
+        <always_on>1</always_on>
+        <update_rate>250</update_rate>
+        <imu>
+          <angular_velocity>
+            <x>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.00018665</stddev>
+                <dynamic_bias_stddev>3.8785e-05</dynamic_bias_stddev>
+                <dynamic_bias_correlation_time>1000</dynamic_bias_correlation_time>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.00018665</stddev>
+                <dynamic_bias_stddev>3.8785e-05</dynamic_bias_stddev>
+                <dynamic_bias_correlation_time>1000</dynamic_bias_correlation_time>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.00018665</stddev>
+                <dynamic_bias_stddev>3.8785e-05</dynamic_bias_stddev>
+                <dynamic_bias_correlation_time>1000</dynamic_bias_correlation_time>
+              </noise>
+            </z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.00186</stddev>
+                <dynamic_bias_stddev>0.006</dynamic_bias_stddev>
+                <dynamic_bias_correlation_time>300</dynamic_bias_correlation_time>
+              </noise>
+            </x>
+            <y>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.00186</stddev>
+                <dynamic_bias_stddev>0.006</dynamic_bias_stddev>
+                <dynamic_bias_correlation_time>300</dynamic_bias_correlation_time>
+              </noise>
+            </y>
+            <z>
+              <noise type="gaussian">
+                <mean>0</mean>
+                <stddev>0.00186</stddev>
+                <dynamic_bias_stddev>0.006</dynamic_bias_stddev>
+                <dynamic_bias_correlation_time>300</dynamic_bias_correlation_time>
+              </noise>
+            </z>
+          </linear_acceleration>
+        </imu>
+      </sensor>
+
+      <sensor name="camera" type="camera">
+        <gz_frame_id>gimbal_camera_link</gz_frame_id>
+        <topic>fpv/camera/image_raw</topic>
+        <!-- Lens: front (+X) face of the Walksnail camera mesh, upright -->
+        <pose>0.029264 0.000967 -0.021365 0 0 0</pose>
+        <camera>
+          <horizontal_fov>2.7925</horizontal_fov>
+          <image>
+            <format>R8G8B8</format>
+            <width>1920</width>
+            <height>1080</height>
+          </image>
+          <clip>
+            <near>0.05</near>
+            <far>15000</far>
+          </clip>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>60</update_rate>
+        <visualize>true</visualize>
+      </sensor>
+    </link>
+
+    <!-- Gimbal actuation. Reuses the proven PID gains from model://gimbal
+         (no published GM3 control-loop tuning data); the GM3's much higher
+         rated tracking speed (+/-1500 deg/s) is not reflected in these gains
+         since they haven't been re-tuned against real hardware data. -->
+    <plugin
+      filename="gz-sim-joint-position-controller-system"
+      name="gz::sim::systems::JointPositionController">
+      <joint_name>gm3_yaw_joint</joint_name>
+      <sub_topic>command/gimbal_yaw</sub_topic>
+      <p_gain>0.8</p_gain>
+      <i_gain>0.035</i_gain>
+      <d_gain>0.02</d_gain>
+      <i_max>0</i_max>
+      <i_min>0</i_min>
+      <cmd_max>0.3</cmd_max>
+      <cmd_min>-0.3</cmd_min>
+    </plugin>
+    <plugin
+      filename="gz-sim-joint-position-controller-system"
+      name="gz::sim::systems::JointPositionController">
+      <joint_name>gm3_roll_joint</joint_name>
+      <sub_topic>command/gimbal_roll</sub_topic>
+      <p_gain>0.8</p_gain>
+      <i_gain>0.01245</i_gain>
+      <d_gain>0.015</d_gain>
+      <i_max>0</i_max>
+      <i_min>0</i_min>
+      <cmd_max>0.3</cmd_max>
+      <cmd_min>-0.3</cmd_min>
+    </plugin>
+    <plugin
+      filename="gz-sim-joint-position-controller-system"
+      name="gz::sim::systems::JointPositionController">
+      <joint_name>gm3_pitch_joint</joint_name>
+      <sub_topic>command/gimbal_pitch</sub_topic>
+      <p_gain>0.8</p_gain>
+      <i_gain>0.01245</i_gain>
+      <d_gain>0.015</d_gain>
+      <i_max>0</i_max>
+      <i_min>0</i_min>
+      <cmd_max>0.3</cmd_max>
+      <cmd_min>-0.3</cmd_min>
+    </plugin>
+
+  </model>
+</sdf>

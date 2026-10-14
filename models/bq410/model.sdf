@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version='1.9'>
+  <model name='bq410'>
+    <!-- Spawned by airframe 4024_gz_bq410 (make px4_sitl gz_bq410).
+         bq410_base already carries the motors and sensors. -->
+    <include merge='true'>
+      <uri>model://bq410_base</uri>
+    </include>
+
+    <!-- YDLidar T-mini Plus 2D lidar on the top plate (z 0.051). Lidar centre
+         (mesh bounding-box centre) at x 7.57162 cm, y 0, z 6.80874 cm from
+         base_link. The include pose is the link origin (base of the lidar),
+         0.016953 m below that centre: visual offset 0.01511 + bbox centre
+         0.001843 in lidar_2d_ydlidar_tf_mini. Scan published on /lidar/scan. -->
+    <include merge='true'>
+      <uri>model://lidar_2d_ydlidar_tf_mini</uri>
+      <pose relative_to="base_link">0.0757162 0 0.0511343 0 0 0</pose>
+    </include>
+    <joint name="ydlidar_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>lidar_2d_generic_link</child>
+    </joint>
+
+    <!-- Intel RealSense D455F with its two RGBD mounts, forward-facing under the
+         front of the body. d455_link (both sensors, frame id camera_link) is the RealSense depth
+         origin = left IR imager, measured on the Blender D455 mesh (case
+         124 x 29 x 26 mm, matches datasheet): front plate x 27.43 mm - 0.10 glass
+         - 4.55 = 22.78 mm; case centre y +0.16 + 47.5 = 47.66 mm; case centre
+         z -73.60 mm. Unrotated (looks along +X). Real-vehicle EKF2_EV_POS
+         (FRD) = 0.0228, -0.0477, 0.0736. -->
+    <include merge='true'>
+      <uri>model://d455</uri>
+      <pose relative_to="base_link">0.0227775 0.0476608 -0.0736002 0 0 0</pose>
+    </include>
+    <joint name="d455_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>d455_link</child>
+    </joint>
+    <!-- MicoAir MTF-01 optical flow + ToF module on the bottom plate, facing down.
+         Positions measured on the OF-MTF-01 mesh in Blender (world = base_link):
+           flow camera lens (PMW3901-class, circle fit): x 84.689, y -0.221, z -17.333 mm
+           ToF emitter/receiver lens midpoint:            x 76.528, y -0.089, z -20.993 mm
+         flow_link origin = flow lens centre, unrotated; the camera is pitched +90 deg
+         so it looks down (-Z). GZBridge reads link/flow_link/sensor/optical_flow.
+         HFOV 42 deg = MTF-01 flow FOV. Visual: MTF-01 board + mount, authored in
+         this link's frame. -->
+    <link name="flow_link">
+      <pose relative_to="base_link">0.084689 -0.000221 -0.017333 0 0 0</pose>
+      <inertial>
+        <mass>0.010</mass>
+        <inertia>
+          <ixx>1e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-06</iyy>
+          <iyz>0</iyz>
+          <izz>1e-06</izz>
+        </inertia>
+      </inertial>
+      <visual name="mtf01_visual">
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://bq410/meshes/mtf01.glb</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.1 0.1 0.1 1</ambient>
+          <diffuse>0.1 0.1 0.1 1</diffuse>
+          <specular>0.01 0.01 0.01 1</specular>
+        </material>
+      </visual>
+      <sensor name="flow_camera" type="camera">
+        <gz_frame_id>flow_link</gz_frame_id>
+        <pose>0 0 0 0 1.5707963 0</pose>
+        <camera>
+          <horizontal_fov>0.733038</horizontal_fov>
+          <image>
+            <width>100</width>
+            <height>100</height>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>30</far>
+          </clip>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>50</update_rate>
+        <visualize>true</visualize>
+      </sensor>
+      <sensor name="optical_flow" type="custom" gz:type="optical_flow">
+        <gz_frame_id>flow_link</gz_frame_id>
+        <always_on>1</always_on>
+        <update_rate>50</update_rate>
+        <visualize>true</visualize>
+      </sensor>
+    </link>
+    <joint name="flow_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>flow_link</child>
+    </joint>
+    <!-- MTF-01 ToF rangefinder, downward. Origin = midpoint of the ToF emitter and
+         receiver lenses measured on the OF-MTF-01 mesh: x 76.528, y -0.089,
+         z -20.993 mm from base_link. Link pitched +90 deg so the single beam
+         (link +X) points down. MTF-01 range 0.02-8 m. GZBridge reads
+         link/lidar_sensor_link/sensor/lidar/scan as distance_sensor. -->
+    <link name="lidar_sensor_link">
+      <pose relative_to="base_link">0.076528 -0.000089 -0.020993 0 1.5707963 0</pose>
+      <inertial>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>1e-07</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-07</iyy>
+          <iyz>0</iyz>
+          <izz>1e-07</izz>
+        </inertia>
+      </inertial>
+      <sensor name="lidar" type="gpu_lidar">
+        <gz_frame_id>lidar_sensor_link</gz_frame_id>
+        <pose>0 0 0 0 0 0</pose>
+        <update_rate>50</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>1</samples>
+              <resolution>1</resolution>
+              <min_angle>0</min_angle>
+              <max_angle>0</max_angle>
+            </horizontal>
+            <vertical>
+              <samples>1</samples>
+              <resolution>1</resolution>
+              <min_angle>0</min_angle>
+              <max_angle>0</max_angle>
+            </vertical>
+          </scan>
+          <range>
+            <min>0.02</min>
+            <max>8.0</max>
+            <resolution>0.01</resolution>
+          </range>
+        </ray>
+        <always_on>1</always_on>
+        <visualize>true</visualize>
+      </sensor>
+    </link>
+    <joint name="lidar_sensor_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>lidar_sensor_link</child>
+    </joint>
+    <!-- CaddxFPV GM3 gimbal + Walksnail camera, hanging under the nose.
+         Pose = Blender Gimbal_GM3 object origin (x 113.331, y 0, z 13.394 mm);
+         its Rx(180) inverted mount is handled inside gm3_gimbal, so no
+         rotation here. Gimbal pivot / camera at x 126.35, y 0.93, z -7.80 mm. -->
+    <include merge='true'>
+      <uri>model://gm3_gimbal</uri>
+      <pose relative_to="base_link">0.1133310 0 0.0133941 0 0 0</pose>
+    </include>
+    <joint name="gm3_attach_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>gm3_mount_link</child>
+    </joint>
+    <!-- Raspberry Pi Camera Module 3, downward-facing under the body, as in
+         q410-gz-full-mat-prop.blend (object rpi-cam-3 at x -46.78, y 0,
+         z -46.64 mm, yaw 180 deg; ribbon connector toward the tail).
+         Link = lens front centre: x -50.645, y 0.527, z -52.791 mm. Pitched
+         +90 deg so the camera looks down (-Z) with image top = forward,
+         away from the connector. Publishes /camera/mono_cam/down/image_raw. -->
+    <include merge='true'>
+      <uri>model://rpi_cam_3</uri>
+      <pose relative_to="base_link">-0.0506452 0.0005270 -0.0527912 0 1.5707963 0</pose>
+    </include>
+    <joint name="rpi_cam_3_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>rpi_cam_3_link</child>
+    </joint>
+  </model>
+</sdf>

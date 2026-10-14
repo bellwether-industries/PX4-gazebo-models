@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version='1.9'>
+  <model name='rpi_cam_3'>
+    <pose>0 0 0 0 0 0</pose>
+    <self_collide>false</self_collide>
+    <static>false</static>
+    <link name="rpi_cam_3_link">
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>0.004</mass>
+        <inertia>
+          <ixx>0.0000005</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0000005</iyy>
+          <iyz>0</iyz>
+          <izz>0.0000005</izz>
+        </inertia>
+      </inertial>
+      <!-- Raspberry Pi Camera Module 3 mesh (q410-gz-full-mat-prop.blend,
+           object rpi-cam-3), authored in its own object frame. Link frame =
+           lens front centre, optical axis +X, image up +Z (gz camera
+           convention); the pose below places the mesh relative to it. -->
+      <visual name="rpi_cam_3/visual">
+        <pose>-0.006152 -0.000527 0.003869 -3.1415927 1.5707963 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://rpi_cam_3/meshes/rpi_cam_3.glb</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <!-- Sony IMX708, Raspberry Pi Camera Module 3 (standard/non-wide lens):
+           4.74mm focal length, 1.4um pixels, native 4608x2592.
+
+           FOV is not the sensor's full 68.5 deg. sensors/mono_cam.py requests
+           1280x720 and libcamera answers with the 1536x864 sensor mode, which
+           reads only the centre 3072x1728 of the array:
+             "Selected sensor format: 1536x864-SBGGR10_1X10/RAW"
+           That 1.5x crop gives 2*atan((3072 * 1.4um)/2 / 4.74mm) = 0.8518 rad
+           = 48.8 deg, and f = 1410.7 px at 1280 wide, exactly what
+           aruco_detector reports on the vehicle. The crop is 16:9 like the
+           output, so the vertical FOV follows correctly from this value.
+
+           If mono_cam.py is ever pinned to the 2304x1296 mode (full array,
+           68.5 deg), this must become 1.1955 and f becomes 940 px. -->
+      <sensor name="rpi_cam_3" type="camera">
+        <gz_frame_id>rpi_cam_3_link</gz_frame_id>
+        <pose>0 0 0 0 0 0</pose>
+        <topic>/camera/mono_cam/down/image_raw</topic>
+        <camera>
+          <horizontal_fov>0.8518</horizontal_fov>
+          <image>
+            <width>1280</width>
+            <height>720</height>
+          </image>
+          <clip>
+            <near>0.05</near>
+            <far>50</far>
+          </clip>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>20</update_rate>
+        <visualize>true</visualize>
+      </sensor>
+      <gravity>true</gravity>
+      <velocity_decay />
+    </link>
+  </model>
+</sdf>

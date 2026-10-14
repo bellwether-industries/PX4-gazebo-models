@@ -6,22 +6,23 @@
     <static>false</static>
     <link name="base_link">
       <!-- Mass: 1.083 kg measured base (everything except the 4 x 0.012 kg DJI 9450
-           props, which are the rotor links); 1.131 kg all-up.
+           props, which are the rotor links) minus the 0.021 kg LW20 links below
+           = 1.062 kg; 1.131 kg all-up.
            Inertia: full-vehicle MOI (Jxx 0.009749, Jyy 0.008251, Jzz 0.014972,
            props included; estimate - the measured set 0.005178/0.004759/0.010900
            violates Jxx+Jyy >= Jzz) minus the 4 rotor links (own inertia +
-           parallel axis).
+           parallel axis), about base_link = Blender world origin (motor centre).
            Prop inertia: DJI 9450 as thin rod, L = 9.4in = 0.2388 m, m = 12 g:
            izz = mL^2/12 = 5.70e-5, ixx = iyy = izz/2 (rotation-averaged). -->
       <inertial>
-        <mass>1.083</mass>
+        <mass>1.062</mass>
         <inertia>
-          <ixx>0.008321</ixx>
+          <ixx>0.008312</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.007229</iyy>
+          <iyy>0.007235</iyy>
           <iyz>0</iyz>
-          <izz>0.012718</izz>
+          <izz>0.012735</izz>
         </inertia>
       </inertial>
       <gravity>true</gravity>
@@ -29,7 +30,9 @@
 
       <!-- Q410 body visual (glTF/GLB, authored directly in meters, Z-up) -->
       <visual name="base_link_visual">
-        <pose>0 0 0 0 0 0</pose>
+        <!-- GLB is authored about the Blender object origin, which sits at
+             (+22.7, 0, +2.6) mm from the Blender world origin = base_link. -->
+        <pose>0.0227 0 0.0026 0 0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -38,13 +41,13 @@
         </geometry>
       </visual>
 
-      <!-- Body collision box: fit to new Q410 body bounding box
-           (min -0.169 -0.190 -0.128 | max 0.122 0.190 0.066, in meters)
+      <!-- Body collision box: fit to the Q410 body bounding box, in base_link
+           (Blender world) coordinates: min -0.142 -0.190 -0.128 | max 0.149 0.190 0.065 m
            Single box approximation for the full body incl. legs; replaces the
            old 5-piece box+leg approximation. Refine per-leg collisions later
            once landing gear geometry is finalized. -->
       <collision name="base_link_collision_0">
-        <pose>-0.019085 0.003699 -0.033634 0 0 0</pose>
+        <pose>0.003615 0 -0.031034 0 0 0</pose>
         <geometry>
           <box>
             <size>0.29098 0.38078 0.19305</size>
@@ -166,7 +169,7 @@
       <gravity>true</gravity>
       <self_collide>false</self_collide>
       <velocity_decay/>
-      <pose>0.109261 -0.166253 0.062892 0 0 0</pose>
+      <pose>0.131961 -0.169952 0.065492 0 0 0</pose>
       <inertial>
         <mass>0.012</mass>
         <inertia>
@@ -232,7 +235,7 @@
       <gravity>true</gravity>
       <self_collide>false</self_collide>
       <velocity_decay/>
-      <pose>-0.147778 0.151164 0.016892 0 0 0</pose>
+      <pose>-0.125078 0.147465 0.019492 0 0 0</pose>
       <inertial>
         <mass>0.012</mass>
         <inertia>
@@ -298,7 +301,7 @@
       <gravity>true</gravity>
       <self_collide>false</self_collide>
       <velocity_decay/>
-      <pose>0.109261 0.173652 0.062892 0 0 0</pose>
+      <pose>0.131961 0.169952 0.065492 0 0 0</pose>
       <inertial>
         <mass>0.012</mass>
         <inertia>
@@ -364,7 +367,7 @@
       <gravity>true</gravity>
       <self_collide>false</self_collide>
       <velocity_decay/>
-      <pose>-0.147778 -0.143765 0.016892 0 0 0</pose>
+      <pose>-0.125078 -0.147465 0.019492 0 0 0</pose>
       <inertial>
         <mass>0.012</mass>
         <inertia>

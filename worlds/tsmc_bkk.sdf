@@ -256,7 +256,7 @@
       <pose>4.92 -0.15 0 0 0 0</pose>
     </model>
 
-    <!-- Stacks: ArUco DICT_4X4_50 on −y (south) id row*4+tier−1 (marker_00..19) and +y (north) id +20 (marker_20..39); textures: model stack_aruco_textures -->
+    <!-- Stacks: ArUco DICT_4X4_50 on −y (south) id row*4+tier−1 (marker_00..19) and +y (north) id +20 (marker_20..39); textures: model wall_aruco_textures -->
 
     <model name="stack_r0_b1">
       <static>true</static>
@@ -294,7 +294,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_00.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_00.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -312,7 +312,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_20.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_20.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -366,7 +366,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_01.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_01.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -384,7 +384,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_21.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_21.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -438,7 +438,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_02.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_02.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -456,7 +456,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_22.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_22.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -510,7 +510,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_03.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_03.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -528,7 +528,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_23.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_23.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -583,7 +583,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_04.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_04.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -601,7 +601,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_24.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_24.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -655,7 +655,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_05.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_05.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -673,7 +673,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_25.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_25.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -727,7 +727,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_06.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_06.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -745,7 +745,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_26.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_26.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -799,7 +799,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_07.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_07.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -817,7 +817,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_27.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_27.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -872,7 +872,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_08.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_08.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -890,7 +890,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_28.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_28.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -944,7 +944,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_09.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_09.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -962,7 +962,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_29.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_29.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -1016,7 +1016,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_10.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_10.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -1034,7 +1034,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_30.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_30.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -1088,7 +1088,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_11.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_11.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -1106,7 +1106,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_31.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_31.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -1161,7 +1161,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_12.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_12.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -1179,7 +1179,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_32.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_32.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -1233,7 +1233,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_13.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_13.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -1251,7 +1251,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_33.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_33.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -1305,7 +1305,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_14.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_14.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -1323,7 +1323,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_34.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_34.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -1377,7 +1377,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_15.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_15.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -1395,7 +1395,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_35.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_35.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -1450,7 +1450,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_16.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_16.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -1468,7 +1468,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_36.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_36.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -1522,7 +1522,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_17.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_17.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -1540,7 +1540,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_37.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_37.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -1594,7 +1594,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_18.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_18.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -1612,7 +1612,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_38.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_38.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -1666,7 +1666,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_19.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_19.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -1684,7 +1684,7 @@
             <specular>0.1 0.1 0.1 1</specular>
             <pbr>
               <metal>
-                <albedo_map>model://stack_aruco_textures/marker_39.png</albedo_map>
+                <albedo_map>model://wall_aruco_textures/marker_39.png</albedo_map>
               </metal>
             </pbr>
           </material>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version="1.9">
+  <model name="depot_barrel_rack">
+    <static>true</static>
+    <!-- Single shelving cabinet: 1.2 m wide x 0.5 m deep x 2.4 m tall -->
+    <link name="link">
+      <!-- Frame posts -->
+      <visual name="post_fl"><pose>-0.22  0.55 1.2 0 0 0</pose><geometry><box><size>0.04 0.04 2.4</size></box></geometry><material><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+      <visual name="post_fr"><pose>-0.22 -0.55 1.2 0 0 0</pose><geometry><box><size>0.04 0.04 2.4</size></box></geometry><material><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+      <visual name="post_bl"><pose> 0.22  0.55 1.2 0 0 0</pose><geometry><box><size>0.04 0.04 2.4</size></box></geometry><material><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+      <visual name="post_br"><pose> 0.22 -0.55 1.2 0 0 0</pose><geometry><box><size>0.04 0.04 2.4</size></box></geometry><material><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+      <!-- Shelves -->
+      <visual name="shelf_0"><pose>0 0 0.05 0 0 0</pose><geometry><box><size>0.48 1.16 0.03</size></box></geometry><material><diffuse>0.25 0.25 0.25 1</diffuse></material></visual>
+      <visual name="shelf_1"><pose>0 0 0.65 0 0 0</pose><geometry><box><size>0.48 1.16 0.03</size></box></geometry><material><diffuse>0.25 0.25 0.25 1</diffuse></material></visual>
+      <visual name="shelf_2"><pose>0 0 1.25 0 0 0</pose><geometry><box><size>0.48 1.16 0.03</size></box></geometry><material><diffuse>0.25 0.25 0.25 1</diffuse></material></visual>
+      <visual name="shelf_3"><pose>0 0 1.85 0 0 0</pose><geometry><box><size>0.48 1.16 0.03</size></box></geometry><material><diffuse>0.25 0.25 0.25 1</diffuse></material></visual>
+      <visual name="shelf_4"><pose>0 0 2.35 0 0 0</pose><geometry><box><size>0.48 1.16 0.03</size></box></geometry><material><diffuse>0.25 0.25 0.25 1</diffuse></material></visual>
+      <!-- Top shelf: red barrels -->
+      <visual name="barrel_0"><pose>-0.05  0.30 2.05 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.45</length></cylinder></geometry><material><diffuse>0.75 0.08 0.08 1</diffuse><specular>0.4 0.1 0.1 1</specular></material></visual>
+      <visual name="barrel_1"><pose>-0.05  0.00 2.05 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.45</length></cylinder></geometry><material><diffuse>0.75 0.08 0.08 1</diffuse><specular>0.4 0.1 0.1 1</specular></material></visual>
+      <visual name="barrel_2"><pose>-0.05 -0.30 2.05 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.45</length></cylinder></geometry><material><diffuse>0.75 0.08 0.08 1</diffuse><specular>0.4 0.1 0.1 1</specular></material></visual>
+      <visual name="barrel_3"><pose>-0.05  0.45 2.05 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.45</length></cylinder></geometry><material><diffuse>0.75 0.08 0.08 1</diffuse><specular>0.4 0.1 0.1 1</specular></material></visual>
+      <visual name="barrel_4"><pose>-0.05 -0.45 2.05 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.45</length></cylinder></geometry><material><diffuse>0.75 0.08 0.08 1</diffuse><specular>0.4 0.1 0.1 1</specular></material></visual>
+      <!-- Mid shelf: red barrels -->
+      <visual name="barrel_5"><pose>-0.05  0.30 1.45 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.45</length></cylinder></geometry><material><diffuse>0.75 0.08 0.08 1</diffuse><specular>0.4 0.1 0.1 1</specular></material></visual>
+      <visual name="barrel_6"><pose>-0.05  0.00 1.45 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.45</length></cylinder></geometry><material><diffuse>0.75 0.08 0.08 1</diffuse><specular>0.4 0.1 0.1 1</specular></material></visual>
+      <visual name="barrel_7"><pose>-0.05 -0.30 1.45 0 0 0</pose><geometry><cylinder><radius>0.12</radius><length>0.45</length></cylinder></geometry><material><diffuse>0.75 0.08 0.08 1</diffuse><specular>0.4 0.1 0.1 1</specular></material></visual>
+      <!-- Lower shelf: wooden crates -->
+      <visual name="crate_0"><pose>-0.05  0.28 0.90 0 0 0</pose><geometry><box><size>0.38 0.38 0.38</size></box></geometry><material><diffuse>0.55 0.38 0.22 1</diffuse></material></visual>
+      <visual name="crate_1"><pose>-0.05 -0.28 0.90 0 0 0</pose><geometry><box><size>0.38 0.38 0.38</size></box></geometry><material><diffuse>0.55 0.38 0.22 1</diffuse></material></visual>
+      <visual name="crate_2"><pose>-0.05  0.00 0.90 0 0 0</pose><geometry><box><size>0.38 0.38 0.38</size></box></geometry><material><diffuse>0.50 0.35 0.20 1</diffuse></material></visual>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.5 1.2 2.4</size>
+          </box>
+        </geometry>
+      </collision>
+    </link>
+  </model>
+</sdf>

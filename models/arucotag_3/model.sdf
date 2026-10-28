@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version='1.9'>
+  <!-- Plane size is the black square edge to edge: arucotag.png carries no
+       quiet zone, so the texture covers the full plane. 0.21 m matches the
+       printed target and aruco_detector's marker_size_m = 0.210.
+       DICT_4X4_50 id 3 on the
+       vehicle. Keep the three in step if any one of them changes. -->
+  <model name='arucotag_3'>
+    <static>true</static>
+    <pose>0 0 0.001 0 0 0</pose>
+    <link name='base'>
+      <visual name='base_visual'>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>0.21 0.21</size>
+          </plane>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <specular>0.4 0.4 0.4 1</specular>
+          <pbr>
+            <metal>
+              <albedo_map>model://arucotag_3/arucotag_3.png</albedo_map>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
